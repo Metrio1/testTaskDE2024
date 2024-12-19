@@ -1,2 +1,2 @@
-import '@styles/normalize.scss';
-import '@styles/global.scss';
+import "@styles/normalize.scss";
+import "@styles/global.scss";
