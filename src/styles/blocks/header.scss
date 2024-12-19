@@ -1,3 +1,21 @@
+@use "@styles/media" as *;
+
 .header {
-  height: var(--headerHeight);
+  --headerInnerMaxWidth: 75rem;
+  padding-top: 2.5rem;
+
+  &__inner {
+    max-width: var(--headerInnerMaxWidth);
+    padding-inline: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: auto;
+    @include desktopAbove {
+      padding-inline: 5rem;
+    }
+    @include mobile {
+      padding-inline: 1rem;
+    }
+  }
 }

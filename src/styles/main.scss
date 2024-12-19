@@ -1,8 +1,10 @@
-@use "@styles/normalize" as *;
-@use "@styles/fonts" as *;
-@use "@styles/mixins" as *;
-@use "@styles/media" as *;
-@use "@styles/palette" as *;
-@use "@styles/variables" as *;
-@use "@styles/utils" as *;
-@use "@styles/globals" as *;
+@use "normalize";
+@use "fonts";
+@use "mixins";
+@use "media";
+@use "palette";
+@use "variables";
+@use "utils";
+@use "globals";
+@use "blocks/button";
+@use "blocks/header";
