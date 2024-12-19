@@ -1,0 +1,50 @@
+@use "@styles/mixins" as *;
+
+body {
+    @include fluidText(16, 14);
+    font-family: var(--fontFamilyBase);
+    font-weight: 400;
+    font-size: var(--baseFontSize);
+    line-height: 1.6;
+    letter-spacing: var(--lineSpacingBase);
+    color: var(--colorDarkBlue);
+    background-color: var(--colorWhite);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+    transition-duration: var(--transitionDuration);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    @include fluidText(64, 32);
+    font-family: 'Times New Roman', sans-serif;
+    letter-spacing: 0.04rem;
+    line-height: 1.16;
+    font-weight: 700;
+}
+
+h2 {
+    @include fluidText(36, 18);
+    font-weight: 600;
+    line-height: 1.28;
+    color: var(--colorBlue);
+}
+
+h3 {
+    @include fluidText(20, 10);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+p {
+    opacity: 0.6;
+}

@@ -1,15 +1,15 @@
-import { defineConfig} from "vite";
-import { fileURLToPath } from 'url';
-import { resolve, dirname } from 'path';
+import { defineConfig } from "vite";
+import { fileURLToPath } from "url";
+import { resolve, dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
-    root: '.',
+    root: ".",
 
     build: {
-        outDir: './dist',
+        outDir: "./dist",
     },
 
     server: {
@@ -21,8 +21,9 @@ export default defineConfig({
 
     resolve: {
         alias: {
-            '@': resolve(__dirname, 'src'),
-            '@styles': resolve(__dirname, 'src/styles'),
+            "@": resolve(__dirname, "src"),
+            "@styles": resolve(__dirname, "src/styles"),
+            "@fonts": resolve(__dirname, "src/fonts"),
         },
     },
 });

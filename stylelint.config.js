@@ -1,11 +1,9 @@
 export default {
-    "extends": "stylelint-config-standard",
     "plugins": [],
     "overrides": [
         {
             "files": [ "**/*.scss", "**/*.css" ],
             "rules": {
-                "order/order": [ "custom-properties", "declarations" ],
                 "function-no-unknown": null,
                 "rule-empty-line-before": [
                     "always",

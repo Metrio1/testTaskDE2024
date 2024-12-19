@@ -1,0 +1,19 @@
+:root {
+  --colorYaleBlue: #1F3F68;
+  --colorLapisLazuli: #316099;
+  --colorAzul: #356EAD;
+  --colorBlueGray: #5A98D0;
+  --colorJordyBlue: #98C3E8;
+  --colorWhiteSmoke: #F2F2F2;
+  --colorWhite: #FFFFFF;
+
+  --colorDarkBlue: var(--colorYaleBlue);
+  --colorBlue: var(--colorLapisLazuli);
+  --colorSecondary: var(--colorAzul);
+  --colorPrimary: var(--colorBlueGray);
+  --colorLightBlue: var(--colorJordyBlue);
+  --colorGrayLight: var(--colorWhiteSmoke);
+
+  --boxShadowCard: 5px 20px 50px 0 rgba(16, 112, 177, 0.2);
+  --boxShadowButton: 5px 10px 20px 0 rgba(53, 110, 173, 0.2);
+}
