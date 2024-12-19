@@ -19,11 +19,11 @@ const getIgnoreFolders = (folders = [ "node_modules", "build", "public", "assets
   const maskName = "%mask%";
   const ignoreMasks = [ `**/${maskName}/`, `/**/${maskName}/*`, `${maskName}/` ];
   return folders
-      .map((folder) => ignoreMasks.map(item => item.replace(maskName, folder)))
+      .map((folder) => ignoreMasks.map((item) => item.replace(maskName, folder)))
       .flat();
 };
 
-const files = [ "js", "jsx", "mjs" ].map(ex => `**/*.${ex}`);
+const files = [ "js", "jsx", "mjs" ].map((ex) => `**/*.${ex}`);
 
 const languageOptions = {
   "globals": {
