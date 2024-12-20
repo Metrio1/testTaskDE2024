@@ -1,10 +1,11 @@
 @use "@styles/media" as *;
 
 .serviceCard {
-  width: var(--cardWidth);
+  max-width: var(--cardWidth);
   padding: var(--cardPadding);
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadowCard);
+
   @include mobile {
     width: 16.25rem;
     padding: 2.25rem;
@@ -24,7 +25,7 @@
     column-gap: 1.5rem;
     color: var(--colorPrimary);
 
-    &-iconWrapper {
+    &-icon-wrapper {
       display: flex;
       align-items: center;
     }
@@ -32,8 +33,10 @@
 }
 
 .icon {
+
   &__manWithList {
-    margin: 0 4.75rem 3.5rem 1.625rem;
+    margin: 0 4.75rem 3.5rem 1.6rem;
+
     @include mobile {
       margin-inline: 0;
       margin-bottom: 1.25rem;
@@ -41,15 +44,17 @@
   }
 
   &__womanWithSmartHome {
-    margin: -4.5rem 1.875rem 3.1875rem;
+    margin: -4.5rem 1.9rem 3.2rem;
+
     @include mobile {
       margin-left: 0.5rem;
-      margin-bottom: 0.9375rem;
+      margin-bottom: 1rem;
     }
   }
 
   &__womanWithLaptop {
     margin: 0 4.75rem 3.5rem 3.25rem;
+
     @include mobile {
       margin-inline: 0;
       margin-bottom: 1.25rem;

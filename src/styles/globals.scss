@@ -33,19 +33,19 @@ h1 {
 }
 
 h2 {
-    @include fluidText(36, 18);
+    @include fluidText(32, 18);
     font-weight: 600;
     line-height: 1.28;
     color: var(--colorBlue);
 }
 
 h3 {
-    @include fluidText(24, 12);
+    @include fluidText(20, 16);
     font-weight: 600;
     line-height: 1.5;
 }
 
 p {
-    @include fluidText(22, 14);
+    @include fluidText(16, 14);
     opacity: 0.6;
 }

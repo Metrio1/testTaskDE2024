@@ -46,7 +46,8 @@
   &__image {
     position: absolute;
     margin-inline: auto;
-    right: 5%;
+    margin-left: 30%;
+    margin-top: 5%;
     @include desktop {
       margin-left: 0;
       right: 2rem;
