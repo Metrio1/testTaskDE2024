@@ -1,0 +1,63 @@
+@use "@styles/media" as *;
+
+.serviceCard {
+  max-width: var(--cardWidth);
+  padding: var(--cardPadding);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--boxShadowCard);
+
+  @include mobile {
+    width: 16.25rem;
+    padding: 2.25rem;
+  }
+
+  &__title {
+    color: var(--colorDarkBlue);
+  }
+
+  &__description {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  &__link {
+    display: flex;
+    column-gap: 1.5rem;
+    color: var(--colorPrimary);
+
+    &-icon-wrapper {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.icon {
+
+  &__manWithList {
+    margin: 0 4.75rem 3.5rem 1.6rem;
+
+    @include mobile {
+      margin-inline: 0;
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  &__womanWithSmartHome {
+    margin: -4.5rem 1.9rem 3.2rem;
+
+    @include mobile {
+      margin-left: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__womanWithLaptop {
+    margin: 0 4.75rem 3.5rem 3.25rem;
+
+    @include mobile {
+      margin-inline: 0;
+      margin-bottom: 1.25rem;
+    }
+  }
+}

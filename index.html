@@ -1,60 +1,172 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test Task App</title>
-  </head>
-  <body>
-    <header class="header">
-      <div class="header__inner">
-        <a href="/" class="header__logo logo">
-          <img
-            class="logo__image"
-            src="public/images/header/header-logo.svg"
-            width="48"
-            height="48"
-            alt="testTask"
-            loading="lazy"
-            />
-        </a>
-        <button class="header__burger burgerButton" type="button">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z" fill="currentColor"/>
-          </svg>
-          <span class="visuallyHidden">Open navigation menu</span>
-        </button>
-      </div>
-    </header>
-    <main class="content">
-      <section class="section">
-          <div class="hero">
-            <div class="hero__main container">
-              <div class="hero__body">
-                <h1 class="hero__title">New Automation<br>Tool for Your Home</h1>
-                <p class="hero__description">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Faucibus tristique vulputate ultrices ut mauris tellus at.
-                  Posuere sollicitudin odio tellus elit.
-                </p>
-                <button class="hero__button button" type="button">
-                  See Our Project
-                </button>
-              </div>
-              <img
-                      class="hero__image"
-                      src="./public/images/hero/hero-bg.svg"
-                      alt=""
-                      width="688"
-                      height="624"
-                      loading="lazy"
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Test Task App</title>
+    </head>
+    <body>
+      <header class="header">
+        <div class="header__inner">
+          <a href="/" class="header__logo logo">
+            <img
+              class="logo__image"
+              src="public/images/header/headerLogo.svg"
+              width="48"
+              height="48"
+              alt="testTask"
+              loading="lazy"
               />
+          </a>
+          <button class="header__burger burgerButton" type="button">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z" fill="currentColor"/>
+            </svg>
+            <span class="visuallyHidden">Open navigation menu</span>
+          </button>
+        </div>
+      </header>
+      <main class="content">
+        <section class="section">
+            <div class="hero">
+              <div class="hero__main container">
+                <div class="hero__body">
+                  <h1 class="hero__title">New Automation<br>Tool for Your Home</h1>
+                  <p class="hero__description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Faucibus tristique vulputate ultrices ut mauris tellus at.
+                    Posuere sollicitudin odio tellus elit.
+                  </p>
+                  <button class="hero__button button" type="button">
+                    See Our Project
+                  </button>
+                </div>
+                <img
+                  class="hero__image"
+                  src="public/images/hero/heroBackground.svg"
+                  alt=""
+                  width="688"
+                  height="624"
+                  loading="lazy"
+                />
+              </div>
             </div>
-
-          </div>
-      </section>
-    </main>
-    <script type="module" src="./src/js/main.js"></script>
-  </body>
-</html>
+        </section>
+        <section class="services container">
+          <h2 class="services__title">What we do to help our client grow in digital era,</h2>
+          <ul class="services__list">
+            <li class="services__item">
+              <article class="serviceCard">
+                <img
+                  src="./public/images/services/manWithList.svg"
+                  alt=""
+                  class="serviceCard__image icon__manWithList"
+                  width="192"
+                  height="132"
+                />
+                <div class="serviceCard__body">
+                  <h3 class="serviceCard__title">
+                    Make Your business To Be Better Famous In Internet
+                  </h3>
+                  <p class="serviceCard__description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+                  <a href="/" class="serviceCard__link">
+                    <span class="serviceCard__linkLabel">Learn more</span>
+                    <span class="serviceCard__linkIconWrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+                    fill="#5A98D0"
+                  />
+                </svg>
+              </span>
+                  </a>
+                </div>
+              </article>
+            </li>
+            <li class="services__item">
+              <article class="serviceCard">
+                <img
+                  src="./public/images/services/womanWithSmartHome.svg"
+                  alt=""
+                  class="serviceCard__image icon__womanWithSmartHome"
+                  width="224"
+                  height="197"
+                />
+                <div class="serviceCard__body">
+                  <h3 class="serviceCard__title">
+                    Bring Technology To Your Comfortable Home
+                  </h3>
+                  <p class="serviceCard__description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+                  <a href="/" class="serviceCard__link">
+                    <span class="serviceCard__linkLabel">Learn more</span>
+                    <span class="serviceCard__linkIconWrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+                    fill="#5A98D0"
+                  />
+                </svg>
+              </span>
+                  </a>
+                </div>
+              </article>
+            </li>
+            <li class="services__item">
+              <article class="serviceCard">
+                <img
+                        src="./public/images/services/womanWithLaptop.svg"
+                        alt=""
+                        class="serviceCard__image icon__womanWithLaptop"
+                        width="171"
+                        height="132"
+                />
+                <div class="serviceCard__body">
+                  <h3 class="serviceCard__title">
+                    Build Your Digital Product That Suitable For Your Need
+                  </h3>
+                  <p class="serviceCard__description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+                  <a href="/" class="serviceCard__link">
+                    <span class="serviceCard__linkLabel">Learn more</span>
+                    <span class="serviceCard__linkIconWrapper">
+                      <svg
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                                d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+                                fill="#5A98D0"
+                        />
+                      </svg>
+                    </span>
+                  </a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <script type="module" src="./src/js/main.js"></script>
+    </body>
+  </html>
