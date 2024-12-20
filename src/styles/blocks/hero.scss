@@ -25,6 +25,9 @@
     max-width: 28rem;
     margin-top: 2rem;
     margin-bottom: 4.5rem;
+    @include desktop {
+      max-width: 20rem;
+    }
     @include mobile {
       max-width: 100%;
       margin-top: 1rem;
@@ -41,14 +44,17 @@
 
   &__image {
     position: absolute;
-    right: 3%;
+    margin-inline: auto;
+    margin-left: 30%;
     @include desktop {
+      margin-left: 0;
+      right: 2rem;
       max-width: 55%;
       height: auto;
     }
     @include mobile {
+      right: 0;
       margin-inline: auto;
-      left: 0;
       position: relative;
       order: -1;
     }
