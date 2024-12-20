@@ -1,0 +1,114 @@
+@use "@styles/media" as *;
+@use "@styles/mixins" as *;
+
+.contacts {
+  background-color: var(--colorBlue);
+  border-top-right-radius: var(--borderRadiusBig);
+  margin-right: 6rem;
+
+  @include desktop {
+    margin-right: 0;
+  }
+
+  @include mobile {
+    border-top-right-radius: 6.25rem;
+  }
+
+  &__top {
+    padding-top: 5.7rem;
+    display: flex;
+
+    @include desktop {
+      padding-inline: 3.1rem;
+    }
+
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+
+    @include tablet {
+      text-align: center;
+    }
+  }
+
+  &__button {
+    margin: 4.6rem 11.25rem;
+
+    @include tablet {
+      margin: 2.3rem 5.6rem;
+    }
+
+    @include mobile {
+      margin: 2.3rem 2.8rem;
+    }
+  }
+
+  &__divider {
+    margin: 6rem 0;
+    border: none;
+    border-top: 1px solid var(--colorWhite);
+    width: 80%;
+    opacity: 0.2;
+
+    @include tablet {
+      margin: 3rem 0;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    column-gap: 5rem;
+    padding-bottom: 5rem;
+
+    @include desktop {
+      padding-inline: 3.1rem;
+    }
+
+    @include tablet {
+      justify-content: center;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      row-gap: 4rem;
+      width: 16.25rem;
+    }
+
+    &-title {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  &__info {
+    width: 30%;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    &-brand {
+      align-items: center;
+    }
+
+    &-description {
+      opacity: 1;
+    }
+  }
+}
+
+.contact {
+  display: flex;
+  column-gap: 1rem;
+}
