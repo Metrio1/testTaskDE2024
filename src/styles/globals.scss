@@ -1,7 +1,7 @@
 @use "@styles/mixins" as *;
 
 body {
-    @include fluidText(16, 14);
+    @include fluidText(18, 14);
     font-family: var(--fontFamilyBase);
     font-weight: 400;
     font-size: var(--baseFontSize);
@@ -25,7 +25,7 @@ a {
 }
 
 h1 {
-    @include fluidText(64, 32);
+    @include fluidText(85, 35);
     font-family: 'Times New Roman', sans-serif;
     letter-spacing: 0.04rem;
     line-height: 1.16;
@@ -40,11 +40,12 @@ h2 {
 }
 
 h3 {
-    @include fluidText(20, 10);
+    @include fluidText(24, 12);
     font-weight: 600;
     line-height: 1.5;
 }
 
 p {
+    @include fluidText(22, 14);
     opacity: 0.6;
 }

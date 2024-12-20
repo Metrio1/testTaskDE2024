@@ -1,0 +1,56 @@
+@use "@styles/media" as *;
+
+.hero {
+  background: var(--gradient);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
+  &__main {
+    display: flex;
+    align-items: center;
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__title {
+    @include mobile {
+      order: -2;
+    }
+  }
+
+  &__description {
+    max-width: 28rem;
+    margin-top: 2rem;
+    margin-bottom: 4.5rem;
+    @include mobile {
+      max-width: 100%;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__body {
+    position: relative;
+    @include mobile {
+      display: contents;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    right: 3%;
+    @include desktop {
+      max-width: 55%;
+      height: auto;
+    }
+    @include mobile {
+      margin-inline: auto;
+      left: 0;
+      position: relative;
+      order: -1;
+    }
+  }
+}
