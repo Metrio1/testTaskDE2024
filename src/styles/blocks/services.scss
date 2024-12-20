@@ -1,0 +1,60 @@
+@use "@styles/media" as *;
+
+.services {
+  padding-top: 11.25rem;
+  padding-bottom: 13.25rem;
+  display: flex;
+  @include tablet {
+    justify-content: center;
+    padding-top: 5.625rem;
+  }
+
+  &__title {
+    width: 22.375rem;
+    position: absolute;
+    color: var(--colorBlue);
+    @include desktop {
+      margin-left: 3rem;
+    }
+    @include tablet {
+      text-align: center;
+      margin-left: 0;
+      width: 50%;
+    }
+  }
+
+  &__list {
+    width: var(--containerWidth);
+    height: 72.5rem;
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 6.25rem;
+    @include tablet {
+      height: auto;
+      width: var(--cardWidth);
+      flex-wrap: nowrap;
+      row-gap: 3.125rem;
+    }
+  }
+
+  &__item {
+    align-self: end;
+
+    &:nth-child(1) {
+      margin-top: 15.625rem;
+      @include tablet {
+        margin-top: 12.5rem;
+      }
+      @include mobile {
+        margin-top: 9.375rem;
+      }
+    }
+
+    &:nth-child(2) {
+      margin-top: 0.75rem;
+    }
+    @include desktop {
+      align-self: center;
+    }
+  }
+}
