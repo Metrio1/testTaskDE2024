@@ -13,7 +13,6 @@
   &__text {
     display: flex;
     column-gap: 4rem;
-
     @include desktop {
       @include flexCenter(true);
       flex-direction: column;
@@ -28,7 +27,6 @@
   &__description {
     opacity: 0.6;
     width: 70%;
-
     @include desktop {
       text-align: center;
     }
@@ -38,13 +36,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-
     @include tablet {
       margin-inline: 5.6rem;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(4, 1fr);
     }
-
     @include mobile {
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: repeat(8, 1fr);
@@ -56,7 +52,6 @@
     padding-block: 2.56rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
-
     @include tabletAbove {
       &:nth-child(4n) {
         border-right: none;
@@ -70,7 +65,6 @@
     &:nth-last-child(-n+1) {
       background-color: rgba(#1F3F68FF, 0.2);
     }
-
     @include tablet {
       &:nth-child(2n) {
         border-right: none;
@@ -84,8 +78,9 @@
         background-color: rgba(#1F3F68FF, 0.2);
       }
     }
-
     @include mobile {
+      font-size: 14px;
+
       &:nth-child(n) {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);

@@ -5,10 +5,14 @@
   padding: var(--cardPadding);
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadowCard);
-
+  transition: transform var(--transitionDuration) ease, box-shadow var(--transitionDuration) ease;
   @include mobile {
     width: 16.25rem;
     padding: 2.25rem;
+  }
+  @include hover {
+    transform: translateY(-0.5rem);
+    box-shadow: var(--boxShadowHoverCard)
   }
 
   &__title {
@@ -33,10 +37,8 @@
 }
 
 .icon {
-
   &__manWithList {
     margin: 0 4.75rem 3.5rem 1.6rem;
-
     @include mobile {
       margin-inline: 0;
       margin-bottom: 1.25rem;
@@ -45,7 +47,6 @@
 
   &__womanWithSmartHome {
     margin: -4.5rem 1.9rem 3.2rem;
-
     @include mobile {
       margin-left: 0.5rem;
       margin-bottom: 1rem;
@@ -54,7 +55,6 @@
 
   &__womanWithLaptop {
     margin: 0 4.75rem 3.5rem 3.25rem;
-
     @include mobile {
       margin-inline: 0;
       margin-bottom: 1.25rem;
