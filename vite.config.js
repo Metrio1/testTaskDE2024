@@ -23,7 +23,6 @@ export default defineConfig({
     alias: {
       "@": resolve(__dirname, "src"),
       "@styles": resolve(__dirname, "src/styles"),
-      "@fonts": resolve(__dirname, "public/fonts"),
     },
   },
 });

@@ -10,31 +10,8 @@
   color: var(--colorRed);
 }
 
-.modalSuccess {
-  position: fixed;
-  opacity: 0;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--colorGreen);
-  color: var(--colorWhite);
-  padding: 20px 30px;
-  text-align: center;
-  border-radius: var(--borderRadius);
-  box-shadow: var(--boxShadowButton);
-  font-size: 16px;
-  z-index: 1000;
-  transition: var(--transitionDuration);
-}
-
 .modalSuccess.isOpen {
   opacity: 1;
-}
-
-:root {
-  --modalMinWidth: 39.5vw;
-  --modalMinHeight: 50dvh;
-  --modalBackround: var(--colorWhite);
 }
 
 .modalBackdrop {
@@ -48,14 +25,17 @@
   opacity: 0;
   transition: all 0.3s;
   pointer-events: none;
-}
 
-.modalBackdrop.isOpen {
-  opacity: 1;
-  pointer-events: all;
+  &.isOpen {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 .modal {
+  --modalMinWidth: 39.5vw;
+  --modalMinHeight: 50dvh;
+  --modalBackround: var(--colorWhite);
   min-width: var(--modalMinWidth);
   min-height: var(--modalMinHeight);
   background-color: var(--modalBackround);
@@ -69,6 +49,10 @@
   padding: var(--modalPadding);
   border-radius: var(--borderRadius);
   transition: all 0.3s;
+
+  @include mobile {
+    padding: 2rem;
+  }
 
   &__closeButton {
     @include resetButton;
@@ -110,6 +94,10 @@
     margin-bottom: 3rem;
     text-transform: uppercase;
     color: var(--colorDarkBlue);
+
+    @include mobile {
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__body {
@@ -120,7 +108,11 @@
   &__form {
     display: flex;
     flex-direction: column;
-    row-gap: 32px;
+    row-gap: 1rem;
+
+    @include mobile {
+      row-gap: 1rem;
+    }
 
     &Group {
       display: flex;
@@ -138,6 +130,10 @@
 
     &Input {
       height: var(--inputHeight);
+
+      @include mobile {
+        height: var(--inputHeightMobile);
+      }
     }
 
     &Textarea {
@@ -148,14 +144,36 @@
     &Submit {
       margin-top: 40px;
       height: 72px;
+
+      @include mobile {
+        margin-top: 0;
+      }
     }
   }
-}
 
-.modal.isOpen {
-  opacity: 1;
-  top: 50%;
-  visibility: visible;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s;
+  &.isOpen {
+    opacity: 1;
+    top: 50%;
+    visibility: visible;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+  }
+
+  &--isSuccess {
+    --modalBackround: var(--colorGreen);
+    position: fixed;
+    opacity: 0;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--modalBackround);
+    color: var(--colorWhite);
+    padding: 20px 30px;
+    text-align: center;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadowButton);
+    font-size: 16px;
+    z-index: 1000;
+    transition: var(--transitionDuration);
+  }
 }

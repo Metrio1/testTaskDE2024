@@ -48,14 +48,14 @@
                 Faucibus tristique vulputate ultrices ut mauris tellus at.
                 Posuere sollicitudin odio tellus elit.
               </p>
-              <a class="hero__button button" type="button">
+              <a href="/" class="hero__button button" type="button">
                 See Our Project
               </a>
             </div>
             <img
               class="hero__image"
               src="public/images/hero/heroBackground.svg"
-              alt=""
+              alt="Background illustration showing automation tools"
               width="688"
               height="624"
               loading="lazy"
@@ -198,28 +198,28 @@
         <div class="clients__table">
           <ul class="clients__list">
             <li class="clients__item">
-              <div class="clients__logo">LOGO CLIENT 1</div>
+              <span class="clients__logo">LOGO CLIENT 1</span>
             </li>
             <li class="clients__item">
-              <div class="clients__logo">LOGO CLIENT 2</div>
+              <span class="clients__logo">LOGO CLIENT 2</span>
             </li>
             <li class="clients__item">
-              <div class="clients__logo">LOGO CLIENT 3</div>
+              <span class="clients__logo">LOGO CLIENT 3</span>
             </li>
             <li class="clients__item">
-              <div class="clients__logo">LOGO CLIENT 4</div>
+              <span class="clients__logo">LOGO CLIENT 4</span>
             </li>
             <li class="clients__item">
-              <div class="clients__logo">LOGO CLIENT 5</div>
+              <span class="clients__logo">LOGO CLIENT 5</span>
             </li>
             <li class="clients__item">
-              <div class="clients__logo">LOGO CLIENT 6</div>
+              <span class="clients__logo">LOGO CLIENT 6</span>
             </li>
             <li class="clients__item">
-              <div class="clients__logo">LOGO CLIENT 7</div>
+              <span class="clients__logo">LOGO CLIENT 7</span>
             </li>
             <li class="clients__item">
-              <div class="clients__logo">More Client</div>
+              <span class="clients__logo">More Client</span>
             </li>
           </ul>
         </div>
@@ -247,59 +247,88 @@
         <hr class="contacts__divider"/>
         <div class="contacts__bottom container">
           <div class="contacts__info contacts__column">
-            <div class="contacts__infoBrand contacts__contact contacts__bottomTitle">
-              <img
-                src="./public/images/footer/footerLogo.svg"
-                alt="testTask"
-                class="logo__image"
-                width="48"
-                height="48"
-                loading="lazy"
-              />
-              <h3 class="contacts__infoBrandLabel">Afrianska</h3>
-            </div>
-            <div class="contacts__infoDescription contacts__contact">
-              <span>A.</span>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              </span>
-            </div>
-            <div class="contacts__infoPhoneNumber contacts__contact">
-              <span>T.</span>
-              <a href="tel:+62-812-7313-4321">+62-812-7313-4321</a>
-            </div>
-            <div class="contacts__infoEmail contacts__contact">
-              <span>E.</span>
-              <a href="mailto:hello.afrian@gmail.com">hello.afrian@gmail.com</a>
-            </div>
+            <ul class="contacts__list">
+              <li class="contacts__infoItem">
+                <div class="contacts__infoBrand contacts__contact contacts__bottomTitle">
+                  <img
+                          src="./public/images/footer/footerLogo.svg"
+                          alt="testTask"
+                          class="logo__image"
+                          width="48"
+                          height="48"
+                          loading="lazy"
+                  />
+                  <h3 class="contacts__infoBrandLabel">Afrianska</h3>
+                </div>
+              </li>
+              <li class="contacts__infoItem">
+                <div class="contacts__infoDescription contacts__contact">
+                  <span>A.</span>
+                  <span>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </span>
+                </div>
+              </li>
+              <li class="contacts__infoItem">
+                <address class="contacts__infoPhoneNumber contacts__contact">
+                  <span>T.</span>
+                  <a href="tel:+62-812-7313-4321">+62-812-7313-4321</a>
+                </address>
+              </li>
+              <li class="contacts__infoItem">
+                <address class="contacts__infoEmail contacts__contact">
+                  <span>E.</span>
+                  <a href="mailto:hello.afrian@gmail.com">hello.afrian@gmail.com</a>
+                </address>
+              </li>
+            </ul>
           </div>
+
           <div class="contacts__about contacts__column">
-            <h3 class="contacts__aboutTitle contacts__bottomTitle">About US</h3>
-            <a href="/" class="contacts__aboutLink">About</a>
-            <a href="/" class="contacts__aboutLink">What We Do</a>
-            <a href="/" class="contacts__aboutLink">Project</a>
-            <a href="/" class="contacts__aboutLink">How It Work With Us</a>
+            <h3 class="contacts__aboutTitle contacts__bottomTitle">About Us</h3>
+            <ul class="contacts__list">
+              <li class="contacts__item">
+                <a href="/" class="contacts__link">About</a>
+              </li>
+              <li class="contacts__item">
+                <a href="/" class="contacts__link">What We Do</a>
+              </li>
+              <li class="contacts__item">
+                <a href="/" class="contacts__link">Project</a>
+              </li>
+              <li class="contacts__item">
+                <a href="/" class="contacts__link">How It Works With Us</a>
+              </li>
+            </ul>
           </div>
           <div class="contacts__follow contacts__column">
-            <h3 class="contacts__followTitle contacts__bottomTitle">
-              Follow US
-            </h3>
-            <a href="/" class="contacts__followLink">Instagram</a>
-            <a href="/" class="contacts__followLink">Facebook</a>
-            <a href="/" class="contacts__followLink">Linkedln</a>
-            <a href="/" class="contacts__followLink">Youtube</a>
+            <h3 class="contacts__followTitle contacts__bottomTitle">Follow Us</h3>
+            <ul class="contacts__list">
+              <li class="contacts__item">
+                <a href="/" class="contacts__link">Instagram</a>
+              </li>
+              <li class="contacts__item">
+                <a href="/" class="contacts__link">Facebook</a>
+              </li>
+              <li class="contacts__item">
+                <a href="/" class="contacts__link">LinkedIn</a>
+              </li>
+              <li class="contacts__item">
+                <a href="/" class="contacts__link">YouTube</a>
+              </li>
+            </ul>
           </div>
         </div>
         <div class="contacts__copyright container">
-          <p>2019 © Afrianska. All rights reserved.</p>
+          <p>2019 &copy; Afrianska. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
-    <div class="modalSuccess" id="successModal">Данные успешно отправлены!</div>
+    <div class="modal--isSuccess" id="successModal">Данные успешно отправлены!</div>
 
     <div class="modal" id="modalForm">
-      <form class="modal__closeButtonWrapper" method="dialog">
+      <div class="modal__closeButtonWrapper">
         <button
           id="closeModalButton"
           class="modal__closeButton"
@@ -308,18 +337,12 @@
         >
           <span class="visuallyHidden">Close the submission form</span>
         </button>
-      </form>
+      </div>
       <div class="modal__body">
         <h3 class="modal__title">Send us a message</h3>
         <form
           class="modal__form"
-          data-js-form='{
-            "url": "https://jsonplaceholder.typicode.com/posts",
-            "method": "POST",
-            "showModalAfterSuccess": "#successModal",
-            "preventDefault": true,
-            "isNeedValidateBeforeSubmit": true
-          }'
+          data-js-form='{"url":"https://jsonplaceholder.typicode.com/posts","method":"POST","showModalAfterSuccess":"#successModal","preventDefault":true,"isNeedValidateBeforeSubmit":true}'
         >
           <div class="modal__formGroup" data-js-validate-row>
             <label for="name" class="modal__formLabel">Full name</label>

@@ -83,10 +83,15 @@
     }
   }
 
-  &__column {
+  &__list {
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
     @include mobile {
       text-align: center;
     }

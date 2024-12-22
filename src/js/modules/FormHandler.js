@@ -69,14 +69,12 @@ export class FormHandler {
       .then((data) => {
         console.debug("Успешно:", data);
         if (showModalAfterSuccess) {
-          ModalManager.closeOpenInstance();
           ModalManager.open({
             src: showModalAfterSuccess,
             type: "selector",
             isNeedShowBackdrop: false,
             closeAfterDelay: 2000,
           });
-          ModalManager.scrollUnlock();
         }
       })
       .catch((error) => {
