@@ -38,8 +38,6 @@ export class FormHandler {
       e.preventDefault();
     }
 
-    submitter.disabled = true;
-
     if (isNeedValidateBeforeSubmit) {
       const resValidate = FormValidator.getValidationForm(target);
       if (!resValidate) {
@@ -47,17 +45,15 @@ export class FormHandler {
       }
     }
 
-    const formData = new FormData(target);
     const jsonData = {};
-    formData.forEach((value, key) => {
-      jsonData[key] = value;
-    });
+
+    submitter.disabled = true;
 
     fetch(url, {
       method,
       body: JSON.stringify(jsonData),
       headers: {
-        "Content-Type": "application/json; charset=UTF-8",
+        "Accept": "application/json"
       },
     })
       .then((response) => {
@@ -77,6 +73,7 @@ export class FormHandler {
             isNeedShowBackdrop: false,
             closeAfterDelay: 2000,
           });
+          ModalManager.scrollUnlock();
         }
       })
       .catch((error) => {

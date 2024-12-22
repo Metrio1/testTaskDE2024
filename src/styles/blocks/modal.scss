@@ -46,16 +46,15 @@ body.unlock {
 
 .modal {
   --modalMinWidth: 39.5vw;
-  --modalMinHeight: 50dvh;
+  --modalMinHeight: 98dvh;
   --modalBackround: var(--colorWhite);
-  min-width: var(--modalMinWidth);
-  min-height: var(--modalMinHeight);
+  width: clamp(var(--modalMinWidth), 20vw, 100vw);
+  height: clamp(var(--modalMinHeight), 20dvh, 100dvh);
   background-color: var(--modalBackround);
   opacity: 0;
   visibility: hidden;
   transform: translate(-50%, -50%);
   position: fixed;
-  top: 70%;
   left: 50%;
   z-index: 1000;
   overflow-y: auto;
@@ -63,8 +62,18 @@ body.unlock {
   border-radius: var(--borderRadius);
   transition: all 0.3s;
 
+  @include desktop {
+    --modalMinWidth: 60vw;
+  }
+
+  @include tablet {
+    padding: 3rem;
+    --modalMinWidth: 70vw;
+  }
+
   @include mobile {
     padding: 2rem;
+    --modalMinWidth: 80vw;
   }
 
   &__closeButton {
@@ -77,17 +86,17 @@ body.unlock {
     height: 3rem;
     cursor: pointer;
     @include mobile {
-      top: 16px;
-      right: 25px;
+      top: 1rem;
+      right: 1.56rem;
     }
 
     &::before,
     &::after {
       content: '';
       position: absolute;
-      top: 22px;
-      right: 8px;
-      width: 32px;
+      top: 1.38rem;
+      right: 0.5rem;
+      width: 2rem;
       height: 2px;
       background-color: var(--colorDarkBlue);
       border-radius: var(--borderRadius);
@@ -118,75 +127,37 @@ body.unlock {
     flex-direction: column;
   }
 
-  &__form {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-
-    @include mobile {
-      row-gap: 1rem;
-    }
-
-    &Group {
-      display: flex;
-      flex-direction: column;
-      row-gap: 8px;
-    }
-
-    &Input,
-    &Textarea {
-      padding-inline: 36px;
-      border-radius: var(--borderRadius);
-      border: 1px solid var(--colorSecondary);
-      opacity: 0.4;
-    }
-
-    &Input {
-      height: var(--inputHeight);
-
-      @include mobile {
-        height: var(--inputHeightMobile);
-      }
-    }
-
-    &Textarea {
-      padding-top: 21px;
-      min-height: 144px;
-    }
-
-    &Submit {
-      margin-top: 40px;
-      height: 72px;
-
-      @include mobile {
-        margin-top: 0;
-      }
-    }
-  }
-
   &.isOpen {
     opacity: 1;
     top: 50%;
     visibility: visible;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s;
+    transition: var(--transitionDuration);
   }
 
   &--isSuccess {
     --modalBackround: var(--colorGreen);
+    --modalMinWidth: 0;
+    --modalMinHeight: 0;
     position: fixed;
     opacity: 0;
-    top: 20px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--modalBackround);
     color: var(--colorWhite);
-    padding: 20px 30px;
+    padding: 1.25rem 2rem;
     text-align: center;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadowButton);
-    font-size: 16px;
+    font-size: 1rem;
     z-index: 1000;
     transition: var(--transitionDuration);
+
+    &.isOpen {
+      opacity: 1;
+      top: 1rem;
+      visibility: visible;
+      transition: var(--transitionDuration);
+    }
   }
 }

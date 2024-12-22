@@ -6,11 +6,9 @@ export class ScrollManager {
             return;
         }
 
-        // Устанавливаем текущую позицию скролла в CSS-переменную
         const scrollY = window.scrollY;
-        document.body.style.setProperty('--scrolledTop', `${scrollY}px`);
+        document.body.style.setProperty('--scrolledTop', `-${scrollY}px`);
 
-        // Добавляем класс для блокировки
         document.body.classList.add('lock');
         document.body.classList.remove('unlock');
 
@@ -22,15 +20,12 @@ export class ScrollManager {
             return;
         }
 
-        // Убираем класс блокировки
         document.body.classList.remove('lock');
         document.body.classList.add('unlock');
 
-        // Прокручиваем обратно на сохранённую позицию
         const scrollY = parseInt(getComputedStyle(document.body).getPropertyValue('--scrolledTop'), 10);
-        window.scrollTo({ top: scrollY, behavior: 'instant' });
+        window.scrollTo({ top: -scrollY, behavior: 'instant' });
 
-        // Убираем переменную после разблокировки
         document.body.style.removeProperty('--scrolledTop');
 
         ScrollManager.isLocked = false;

@@ -14,7 +14,7 @@
             src="public/images/header/headerLogo.svg"
             width="48"
             height="48"
-            alt="testTask"
+            alt="Logo of the test task project"
             loading="lazy"
           />
         </a>
@@ -341,45 +341,45 @@
       <div class="modal__body">
         <h3 class="modal__title">Send us a message</h3>
         <form
-          class="modal__form"
+          class="form"
           data-js-form='{"url":"https://jsonplaceholder.typicode.com/posts","method":"POST","showModalAfterSuccess":"#successModal","preventDefault":true,"isNeedValidateBeforeSubmit":true}'
         >
-          <div class="modal__formGroup" data-js-validate-row>
-            <label for="name" class="modal__formLabel">Full name</label>
+          <div class="form__group" data-js-validate-row>
+            <label for="name" class="form__label">Full name</label>
             <input
               type="text"
               id="name"
-              class="modal__formInput"
+              class="form__input"
               placeholder="Your Name"
               data-js-input-required="name"
               data-js-input-required-mode="blur, change"
             />
             <small data-js-error-msg></small>
           </div>
-          <div class="modal__formGroup" data-js-validate-row>
-            <label for="email" class="modal__formLabel">Email</label>
+          <div class="form__group" data-js-validate-row>
+            <label for="email" class="form__label">Email</label>
             <input
               type="text"
               id="email"
-              class="modal__formInput"
+              class="form__input"
               placeholder="Your Email"
               data-js-input-required="email"
               data-js-input-required-mode="blur, change"
             />
             <small data-js-error-msg></small>
           </div>
-          <div class="modal__formGroup" data-js-validate-row>
-            <label for="message" class="modal__formLabel">Message</label>
+          <div class="form__group" data-js-validate-row>
+            <label for="message" class="form__label">Message</label>
             <textarea
               id="message"
-              class="modal__formTextarea"
+              class="form__textarea"
               placeholder="Your Message"
               data-js-input-required="message"
               data-js-input-required-mode="blur, change"
             ></textarea>
             <small data-js-error-msg></small>
           </div>
-          <button class="modal__formSubmit button" type="submit">Submit</button>
+          <button class="form__submit button" type="submit">Submit</button>
         </form>
       </div>
     </div>
