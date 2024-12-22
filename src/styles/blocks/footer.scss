@@ -8,15 +8,4 @@
   @include mobile {
     border-top-left-radius: 6.25rem;
   }
-
-  &__copyright {
-    display: flex;
-    padding-bottom: 4rem;
-    @include desktop {
-      padding-inline: 3.1rem;
-    }
-    @include tablet {
-      justify-content: center;
-    }
-  }
 }

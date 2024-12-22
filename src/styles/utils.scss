@@ -18,33 +18,3 @@
   clip: rect(0 0 0 0) !important;
   overflow: hidden !important;
 }
-
-.hiddenDesktop {
-  @include desktop {
-    display: none !important;
-  }
-}
-
-.visibleDesktop {
-  @include desktopAbove {
-    display: none !important;
-  }
-}
-
-.hiddenTablet {
-  @include tablet {
-    display: none !important;
-  }
-}
-
-.visibleTablet {
-  @include tabletAbove {
-    display: none !important;
-  }
-}
-
-.hiddenMobile {
-  @include mobile {
-    display: none !important;
-  }
-}

@@ -1,0 +1,161 @@
+@use "@styles/media" as *;
+@use "@styles/mixins" as *;
+
+.isValid [data-js-error-msg] {
+  display: none;
+}
+
+.isInvalid [data-js-error-msg] {
+  display: block;
+  color: var(--colorRed);
+}
+
+.modalSuccess {
+  position: fixed;
+  opacity: 0;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--colorGreen);
+  color: var(--colorWhite);
+  padding: 20px 30px;
+  text-align: center;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--boxShadowButton);
+  font-size: 16px;
+  z-index: 1000;
+  transition: var(--transitionDuration);
+}
+
+.modalSuccess.isOpen {
+  opacity: 1;
+}
+
+:root {
+  --modalMinWidth: 39.5vw;
+  --modalMinHeight: 50dvh;
+  --modalBackround: var(--colorWhite);
+}
+
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.modalBackdrop.isOpen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  min-width: var(--modalMinWidth);
+  min-height: var(--modalMinHeight);
+  background-color: var(--modalBackround);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  z-index: 1000;
+  padding: var(--modalPadding);
+  border-radius: var(--borderRadius);
+  transition: all 0.3s;
+
+  &__closeButton {
+    @include resetButton;
+    top: 3rem;
+    right: 3rem;
+    position: absolute;
+    border-radius: var(--borderRadius);
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    @include mobile {
+      top: 16px;
+      right: 25px;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 22px;
+      right: 8px;
+      width: 32px;
+      height: 2px;
+      background-color: var(--colorDarkBlue);
+      border-radius: var(--borderRadius);
+    }
+
+    &::before {
+      rotate: 45deg;
+    }
+
+    &::after {
+      rotate: -45deg;
+    }
+
+  }
+
+  &__title {
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    color: var(--colorDarkBlue);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    &Group {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+    }
+
+    &Input,
+    &Textarea {
+      padding-inline: 36px;
+      border-radius: var(--borderRadius);
+      border: 1px solid var(--colorSecondary);
+      opacity: 0.4;
+    }
+
+    &Input {
+      height: var(--inputHeight);
+    }
+
+    &Textarea {
+      padding-top: 21px;
+      min-height: 144px;
+    }
+
+    &Submit {
+      margin-top: 40px;
+      height: 72px;
+    }
+  }
+}
+
+.modal.isOpen {
+  opacity: 1;
+  top: 50%;
+  visibility: visible;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
+}
