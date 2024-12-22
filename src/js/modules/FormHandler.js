@@ -67,6 +67,8 @@ export class FormHandler {
         return response.json();
       })
       .then((data) => {
+        target.reset();
+
         console.debug("Успешно:", data);
         if (showModalAfterSuccess) {
           ModalManager.open({

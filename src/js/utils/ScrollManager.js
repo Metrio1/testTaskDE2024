@@ -1,5 +1,4 @@
 export class ScrollManager {
-    static scrollY = 0;
     static isLocked = false;
 
     static lock() {
@@ -7,11 +6,13 @@ export class ScrollManager {
             return;
         }
 
-        ScrollManager.scrollY = window.scrollY;
+        // Устанавливаем текущую позицию скролла в CSS-переменную
+        const scrollY = window.scrollY;
+        document.body.style.setProperty('--scrolledTop', `${scrollY}px`);
 
-        document.body.style.position = "fixed";
-        document.body.style.top = `-${ScrollManager.scrollY}px`;
-        document.body.style.width = "100%";
+        // Добавляем класс для блокировки
+        document.body.classList.add('lock');
+        document.body.classList.remove('unlock');
 
         ScrollManager.isLocked = true;
     }
@@ -21,16 +22,17 @@ export class ScrollManager {
             return;
         }
 
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.width = "";
+        // Убираем класс блокировки
+        document.body.classList.remove('lock');
+        document.body.classList.add('unlock');
 
-        window.scrollTo({
-            top: ScrollManager.scrollY, behavior: "instant"
-        });
+        // Прокручиваем обратно на сохранённую позицию
+        const scrollY = parseInt(getComputedStyle(document.body).getPropertyValue('--scrolledTop'), 10);
+        window.scrollTo({ top: scrollY, behavior: 'instant' });
+
+        // Убираем переменную после разблокировки
+        document.body.style.removeProperty('--scrolledTop');
 
         ScrollManager.isLocked = false;
     }
 }
-
-

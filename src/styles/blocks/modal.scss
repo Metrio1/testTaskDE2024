@@ -1,6 +1,18 @@
 @use "@styles/media" as *;
 @use "@styles/mixins" as *;
 
+body.lock {
+  position: fixed;
+  top: var(--scrolledTop, 0);
+  width: 100%;
+}
+
+body.unlock {
+  position: static;
+  top: 0;
+  width: auto;
+}
+
 .isValid [data-js-error-msg] {
   display: none;
 }
@@ -46,6 +58,7 @@
   top: 70%;
   left: 50%;
   z-index: 1000;
+  overflow-y: auto;
   padding: var(--modalPadding);
   border-radius: var(--borderRadius);
   transition: all 0.3s;
