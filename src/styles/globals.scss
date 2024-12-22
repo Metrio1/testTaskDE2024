@@ -24,6 +24,7 @@ svg * {
 a {
     text-decoration: none;
     color: inherit;
+
     @include hover {
         color: var(--colorDarkBlue);
     }
@@ -31,6 +32,7 @@ a {
 
 h1 {
     @include fluidText(85, 35);
+
     font-family: 'Times New Roman', sans-serif;
     letter-spacing: 0.04rem;
     line-height: 1.16;
@@ -39,6 +41,7 @@ h1 {
 
 h2 {
     @include fluidText(32, 18);
+
     font-weight: 600;
     line-height: 1.28;
     color: var(--colorBlue);
@@ -46,11 +49,13 @@ h2 {
 
 h3 {
     @include fluidText(20, 16);
+
     font-weight: 600;
     line-height: 1.5;
 }
 
 p {
     @include fluidText(16, 14);
+
     opacity: 0.6;
 }

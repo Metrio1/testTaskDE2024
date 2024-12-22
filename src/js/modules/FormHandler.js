@@ -45,52 +45,53 @@ export class FormHandler {
       }
     }
 
-    const jsonData = {};
+    const formData = new FormData(target);
 
     submitter.disabled = true;
 
+    // TODO: Можно реализовать конфигурацию формата отправки через data-js-form и обработку перед fetch
     fetch(url, {
       method,
-      body: JSON.stringify(jsonData),
+      body: formData,
       headers: {
-        "Accept": "application/json"
+        "Accept": "application/json",
       },
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Сетевой ответ не успешен");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        target.reset();
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Сетевой ответ не успешен");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          target.reset();
 
-        console.debug("Успешно:", data);
-        if (showModalAfterSuccess) {
-          ModalManager.open({
-            src: showModalAfterSuccess,
-            type: "selector",
-            isNeedShowBackdrop: false,
-            closeAfterDelay: 2000,
-          });
-          ModalManager.scrollUnlock();
-        }
-      })
-      .catch((error) => {
-        console.error("Ошибка при выполнении запроса:", error);
-      })
-      .finally(() => {
-        submitter.disabled = false;
-      });
+          console.debug("Успешно:", data);
+          if (showModalAfterSuccess) {
+            ModalManager.open({
+              src: showModalAfterSuccess,
+              type: "selector",
+              isNeedShowBackdrop: false,
+              closeAfterDelay: 2000,
+            });
+            ModalManager.scrollUnlock();
+          }
+        })
+        .catch((error) => {
+          console.error("Ошибка при выполнении запроса:", error);
+        })
+        .finally(() => {
+          submitter.disabled = false;
+        });
   }
 
   #bindEvents() {
     document.addEventListener(
-      "submit",
-      (e) => {
-        this.#handleSubmit(e);
-      },
-      true
+        "submit",
+        (e) => {
+          this.#handleSubmit(e);
+        },
+        true
     );
   }
 }

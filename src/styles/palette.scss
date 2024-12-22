@@ -1,7 +1,9 @@
 :root {
   --colorFireBrick: #B42020;
   --colorHunterGreen: #2D5F22;
+  --colorWhiteTransparent: #FFFFFF33;
 
+  --colorDarkBlueTransparent: #1F3F6833;
   --colorYaleBlue: #1F3F68;
   --colorLapisLazuli: #316099;
   --colorAzul: #356EAD;
@@ -10,6 +12,7 @@
   --colorWhiteSmoke: #F2F2F2;
   --colorWhite: #FFFFFF;
 
+  --colorGray: var(--colorDimGray);
   --colorRed: var(--colorFireBrick);
   --colorGreen: var(--colorHunterGreen);
   --colorDarkBlue: var(--colorYaleBlue);

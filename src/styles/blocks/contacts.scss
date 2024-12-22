@@ -20,9 +20,11 @@
   &__top {
     padding-top: 5.7rem;
     display: flex;
+
     @include desktop {
       padding-inline: 3.1rem;
     }
+
     @include tablet {
       flex-direction: column;
     }
@@ -32,6 +34,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
+
     @include tablet {
       text-align: center;
     }
@@ -43,9 +46,11 @@
 
   &__button {
     margin: 4.6rem 11.25rem;
+
     @include tablet {
       margin: 2.3rem 5.6rem;
     }
+
     @include mobile {
       margin: 2.3rem 2.8rem;
     }
@@ -57,6 +62,7 @@
     border-top: 1px solid var(--colorWhite);
     width: 80%;
     opacity: 0.2;
+
     @include tablet {
       margin: 3rem 0;
     }
@@ -66,12 +72,15 @@
     display: flex;
     column-gap: 5rem;
     padding-bottom: 5rem;
+
     @include desktop {
       padding-inline: 3.1rem;
     }
+
     @include tablet {
       justify-content: center;
     }
+
     @include mobile {
       flex-direction: column;
       row-gap: 4rem;
@@ -92,6 +101,7 @@
   &__column {
     display: flex;
     flex-direction: column;
+
     @include mobile {
       text-align: center;
     }
@@ -99,12 +109,14 @@
 
   &__info {
     width: 30%;
+
     @include mobile {
       width: 100%;
     }
 
     &Brand {
       align-items: center;
+
       @include mobile {
         justify-content: center;
       }
@@ -118,12 +130,15 @@
   &__copyright {
     display: flex;
     padding-bottom: 4rem;
+
     @include desktop {
       padding-inline: 3.1rem;
     }
+
     @include tablet {
       justify-content: center;
     }
+
     @include mobile {
       text-align: center;
     }
