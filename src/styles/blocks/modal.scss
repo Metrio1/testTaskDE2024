@@ -19,7 +19,7 @@ body.unlock {
 
 .isInvalid [data-js-error-msg] {
   display: block;
-  color: var(--colorRed);
+  color: var(--colorDanger);
 }
 
 .modalSuccess.isOpen {
@@ -46,10 +46,9 @@ body.unlock {
 
 .modal {
   --modalMinWidth: 39.5vw;
-  --modalMinHeight: 98dvh;
   --modalBackround: var(--colorWhite);
   width: clamp(var(--modalMinWidth), 20vw, 100vw);
-  height: clamp(var(--modalMinHeight), 20dvh, 100dvh);
+  max-height: 98dvh;
   background-color: var(--modalBackround);
   opacity: 0;
   visibility: hidden;
@@ -131,9 +130,8 @@ body.unlock {
   }
 
   &--isSuccess {
-    --modalBackround: var(--colorGreen);
+    --modalBackround: var(--colorSuccess);
     --modalMinWidth: 0;
-    --modalMinHeight: 0;
     position: fixed;
     opacity: 0;
     top: 0;

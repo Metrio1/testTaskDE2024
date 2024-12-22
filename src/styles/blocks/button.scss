@@ -12,6 +12,7 @@
   border-radius: var(--borderRadius);
   white-space: nowrap;
   box-shadow: var(--boxShadowButton);
+  cursor: pointer;
 
   &:disabled {
     cursor: not-allowed;
@@ -34,6 +35,7 @@
   border-radius: var(--borderRadius);
   background: transparent;
   color: var(--colorBlue);
+  cursor: pointer;
   @include hover {
     color: var(--colorWhite);
     background-color: var(--colorPrimary);
