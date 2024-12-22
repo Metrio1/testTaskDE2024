@@ -4,10 +4,10 @@
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
-
   @include mobile {
     row-gap: 1rem;
   }
+
   &__group {
     display: flex;
     flex-direction: column;
@@ -24,7 +24,6 @@
 
   &__input {
     height: var(--inputHeight);
-
     @include mobile {
       height: var(--inputHeightMobile);
     }
@@ -38,7 +37,6 @@
   &__submit {
     margin-top: 2.5rem;
     height: 4.5rem;
-
     @include mobile {
       margin-top: 0;
     }

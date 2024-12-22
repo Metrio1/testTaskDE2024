@@ -61,16 +61,13 @@ body.unlock {
   padding: var(--modalPadding);
   border-radius: var(--borderRadius);
   transition: all 0.3s;
-
   @include desktop {
     --modalMinWidth: 60vw;
   }
-
   @include tablet {
     padding: 3rem;
     --modalMinWidth: 70vw;
   }
-
   @include mobile {
     padding: 2rem;
     --modalMinWidth: 80vw;
@@ -78,7 +75,6 @@ body.unlock {
 
   &__closeButton {
     @include resetButton;
-
     top: 3rem;
     right: 3rem;
     position: absolute;
@@ -86,7 +82,6 @@ body.unlock {
     width: 3rem;
     height: 3rem;
     cursor: pointer;
-
     @include mobile {
       top: 1rem;
       right: 1.56rem;
@@ -118,7 +113,6 @@ body.unlock {
     margin-bottom: 3rem;
     text-transform: uppercase;
     color: var(--colorDarkBlue);
-
     @include mobile {
       margin-bottom: 1.5rem;
     }

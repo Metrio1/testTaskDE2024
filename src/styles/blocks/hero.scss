@@ -10,7 +10,6 @@
     width: calc(var(--containerWidth) + var(--containerPaddingX) * 2);
     display: flex;
     align-items: center;
-
     @include mobile {
       margin-top: 10%;
       flex-direction: column;
@@ -29,11 +28,9 @@
     max-width: 28rem;
     margin-top: 2rem;
     margin-bottom: 4.5rem;
-
     @include desktop {
       max-width: 20rem;
     }
-
     @include mobile {
       max-width: 100%;
       margin-top: 0.5rem;
@@ -43,7 +40,6 @@
 
   &__body {
     position: relative;
-
     @include mobile {
       display: contents;
     }
@@ -54,7 +50,6 @@
     margin-inline: auto;
     margin-left: 30%;
     margin-top: 5%;
-
     @include desktop {
       margin-left: 0;
       right: 2rem;
@@ -62,7 +57,6 @@
       min-width: 18rem;
       height: auto;
     }
-
     @include mobile {
       margin-top: 0;
       right: 0;

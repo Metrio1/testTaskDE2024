@@ -6,7 +6,6 @@
   flex-direction: column;
   row-gap: 7.7rem;
   padding-bottom: 7.8rem;
-
   @include mobile {
     row-gap: 3rem;
   }
@@ -14,7 +13,6 @@
   &__text {
     display: flex;
     column-gap: 4rem;
-
     @include desktop {
 
       @include flexCenter(true);
@@ -30,7 +28,6 @@
   &__description {
     opacity: 0.6;
     width: 70%;
-
     @include desktop {
       text-align: center;
     }
@@ -40,13 +37,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-
     @include tablet {
       margin-inline: 5.6rem;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(4, 1fr);
     }
-
     @include mobile {
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: repeat(8, 1fr);
@@ -59,7 +54,6 @@
     padding-block: 2.56rem;
     border-bottom: 1px solid var(--colorWhiteTransparent);
     border-right: 1px solid var(--colorWhiteTransparent);
-
     @include tabletAbove {
       &:nth-child(4n) {
         border-right: none;
