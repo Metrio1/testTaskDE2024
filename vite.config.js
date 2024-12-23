@@ -25,5 +25,5 @@ export default defineConfig({
       "@styles": resolve(__dirname, "src/styles"),
     },
   },
-  base: "/dist",
+  base: "./",
 });
