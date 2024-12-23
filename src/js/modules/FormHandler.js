@@ -1,5 +1,6 @@
 import { ModalManager } from "./ModalManager.js";
 import { FormValidator } from "./FormValidator.js";
+import { ScrollManager } from "@/js/utils/ScrollManager.js";
 
 export class FormHandler {
   static instance;
@@ -30,11 +31,11 @@ export class FormHandler {
       url,
       method = "POST",
       showModalAfterSuccess,
-      preventDefault = true,
+      isNeedPreventDefault = true,
       isNeedValidateBeforeSubmit,
     } = cfg;
 
-    if (preventDefault) {
+    if (isNeedPreventDefault) {
       e.preventDefault();
     }
 
@@ -74,7 +75,7 @@ export class FormHandler {
               isNeedShowBackdrop: false,
               closeAfterDelay: 2000,
             });
-            ModalManager.scrollUnlock();
+            ScrollManager.unlock();
           }
         })
         .catch((error) => {

@@ -51,15 +51,10 @@ export class FormValidator {
     }
 
     static getValidationForm(form) {
-        const inputs = form.querySelectorAll(`[${FormValidator.attrs.inputRequired}]`);
         let isFormValid = true;
 
-        inputs.forEach(input => {
-            const isValidInput = FormValidator.validateInput(input);
-            if (!isValidInput) {
-                isFormValid = false;
-            }
-        });
+        isFormValid = ![...form.elements]
+            .some(input => input.matches(`[${FormValidator.attrs.inputRequired}]`) && !FormValidator.validateInput(input));
 
         return isFormValid;
     }
