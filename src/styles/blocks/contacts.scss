@@ -20,11 +20,10 @@
   &__top {
     padding-top: 5.7rem;
     display: flex;
-    @include desktop {
-      padding-inline: 3.1rem;
-    }
+    justify-content: center;
     @include tablet {
       flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -32,6 +31,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 2rem;
+    max-width: 80vw;
     @include tablet {
       text-align: center;
     }
@@ -66,9 +66,6 @@
     display: flex;
     column-gap: 5rem;
     padding-bottom: 5rem;
-    @include desktop {
-      padding-inline: 3.1rem;
-    }
     @include tablet {
       justify-content: center;
     }
@@ -86,7 +83,7 @@
   &__list {
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    gap: 1rem;
   }
 
   &__column {
@@ -109,18 +106,12 @@
         justify-content: center;
       }
     }
-
-    &Description {
-      opacity: 1;
-    }
   }
 
   &__copyright {
     display: flex;
     padding-bottom: 4rem;
-    @include desktop {
-      padding-inline: 3.1rem;
-    }
+    justify-content: center;
     @include tablet {
       justify-content: center;
     }

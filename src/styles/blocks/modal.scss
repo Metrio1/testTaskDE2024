@@ -47,6 +47,7 @@ body.unlock {
 .modal {
   --modalMinWidth: 39.5vw;
   --modalBackround: var(--colorWhite);
+  --modalPadding: 3.5rem;
   width: clamp(var(--modalMinWidth), 20vw, 100vw);
   max-height: 98dvh;
   background-color: var(--modalBackround);
@@ -105,7 +106,6 @@ body.unlock {
     &::after {
       rotate: -45deg;
     }
-
   }
 
   &__title {

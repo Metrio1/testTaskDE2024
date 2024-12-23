@@ -40,3 +40,15 @@
   width: $size;
   aspect-ratio: 1;
 }
+
+@mixin nthChildPattern($n, $property, $value) {
+  &:nth-child(#{$n}) {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin nthLastChildPattern($n, $property, $value) {
+  &:nth-last-child(-n+#{$n}) {
+    #{$property}: #{$value};
+  }
+}

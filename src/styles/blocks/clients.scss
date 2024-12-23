@@ -1,7 +1,8 @@
-@use "@styles/media" as *;
 @use "@styles/mixins" as *;
+@use "@styles/media" as *;
 
 .clients {
+  --gridLine: 1px solid var(--colorWhiteTransparent);
   display: flex;
   flex-direction: column;
   row-gap: 7.7rem;
@@ -14,7 +15,6 @@
     display: flex;
     column-gap: 4rem;
     @include desktop {
-
       @include flexCenter(true);
       flex-direction: column;
       row-gap: 3.1rem;
@@ -49,48 +49,25 @@
   }
 
   &__item {
-
     @include flexCenter(true);
     padding-block: 2.56rem;
-    border-bottom: 1px solid var(--colorWhiteTransparent);
-    border-right: 1px solid var(--colorWhiteTransparent);
+    border-bottom: var(--gridLine);
+    border-right: var(--gridLine);
     @include tabletAbove {
-      &:nth-child(4n) {
-        border-right: none;
-      }
-
-      &:nth-last-child(-n+4) {
-        border-bottom: none;
-      }
-    }
-
-    &:nth-last-child(-n+1) {
-      background-color: var(--colorDarkBlueTransparent);
+      @include nthChildPattern(4n, border-right, none);
+      @include nthLastChildPattern(4, border-bottom, none);
+      @include nthLastChildPattern(1, background-color, var(--colorDarkBlueTransparent));
     }
     @include tablet {
-      &:nth-child(2n) {
-        border-right: none;
-      }
-
-      &:nth-last-child(-n+2) {
-        border-bottom: none;
-      }
-
-      &:nth-last-child(-n+1) {
-        background-color: var(--colorDarkBlueTransparent);
-      }
+      @include nthChildPattern(2n, border-right, none);
+      @include nthLastChildPattern(2, border-bottom, none);
+      @include nthLastChildPattern(1, background-color, var(--colorDarkBlueTransparent));
     }
     @include mobile {
       font-size: 14px;
-
-      &:nth-child(n) {
-        border-right: none;
-        border-bottom: 1px solid var(--colorWhiteTransparent);
-      }
-
-      &:nth-last-child(-n+1) {
-        border-bottom: none;
-      }
+      @include nthChildPattern(n, border-right, none);
+      @include nthChildPattern(n, border-bottom, 1px solid var(--colorWhiteTransparent));
+      @include nthLastChildPattern(1, border-bottom, none);
     }
   }
 }

@@ -4,9 +4,6 @@
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
-  @include mobile {
-    row-gap: 1rem;
-  }
 
   &__group {
     display: flex;
@@ -32,6 +29,7 @@
   &__textarea {
     padding-top: 1.31rem;
     min-height: 9rem;
+    resize: vertical;
   }
 
   &__submit {
