@@ -48,7 +48,7 @@
 }
 
 @mixin nthLastChildPattern($n, $property, $value) {
-  &:nth-last-child(-n+#{$n}) {
+  &:nth-last-child(-n + #{$n}) {
     #{$property}: #{$value};
   }
 }
