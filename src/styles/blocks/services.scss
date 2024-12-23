@@ -4,57 +4,77 @@
   padding-top: 11.25rem;
   padding-bottom: 13.25rem;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+
   @include tablet {
-    justify-content: center;
     padding-top: 5.6rem;
   }
 
   &__title {
-    width: 22.4rem;
-    position: absolute;
+    max-width: 20rem;
+    align-self: start;
+    margin-bottom: -4rem;
     color: var(--colorBlue);
+
     @include desktop {
       margin-left: 3rem;
     }
+
     @include tablet {
+      align-self: center;
       text-align: center;
       margin-left: 0;
+      margin-bottom: 3rem;
       width: 80%;
     }
   }
 
   &__list {
-    height: 75rem;
     width: var(--containerWidth);
     display: flex;
-    flex-flow: column wrap;
-    row-gap: 6.25rem;
+    flex-direction: column;
+    padding-left: 5rem;
+
     @include tablet {
-      height: auto;
       width: var(--cardWidth);
-      flex-wrap: nowrap;
-      row-gap: 3.1rem;
+      gap: 3.1rem;
+      padding-left: 0;
     }
   }
 
   &__item {
-    align-self: end;
 
-    &:nth-child(1) {
-      margin-top: 15.6rem;
+    &:nth-child(odd) {
+      align-self: flex-end;
+      margin-top: -15rem;
+
       @include tablet {
-        margin-top: 6rem;
-      }
-      @include mobile {
-        margin-top: 5rem;
+        margin-top: 0;
+        align-self: center;
       }
     }
 
-    &:nth-child(2) {
-      margin-top: 0.75rem;
+    &:nth-child(even) {
+      align-self: flex-start;
+      margin-top: -12rem;
+
+      @include tablet {
+        margin-top: 0;
+        align-self: center;
+      }
     }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
     @include desktop {
       align-self: center;
+    }
+
+    @include tablet {
+      margin-top: 0;
     }
   }
 }
