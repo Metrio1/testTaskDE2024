@@ -31,13 +31,11 @@
   }
 
   &__list {
-    width: var(--containerWidth);
     display: flex;
     flex-direction: column;
     padding-left: 5rem;
 
     @include tablet {
-      width: var(--cardWidth);
       gap: 3.1rem;
       padding-left: 0;
     }
