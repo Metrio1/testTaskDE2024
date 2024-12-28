@@ -17,10 +17,21 @@
     border-radius: var(--borderRadius);
     border: 1px solid var(--colorSecondary);
     opacity: 0.4;
+
+    @include tablet {
+      padding-inline: 1.75rem;
+    }
+
+    @include mobile {
+      padding-inline: 1.25rem;
+    }
   }
 
   &__input {
     height: var(--inputHeight);
+    @include tablet {
+      height: var(--inputHeightTablet);
+    }
     @include mobile {
       height: var(--inputHeightMobile);
     }
@@ -35,8 +46,13 @@
   &__submit {
     margin-top: 2.5rem;
     height: 4.5rem;
+    @include tablet {
+      margin-top: 1.25rem;
+      height: 3.75rem;
+    }
     @include mobile {
       margin-top: 0;
+      height: 3rem;
     }
   }
 }

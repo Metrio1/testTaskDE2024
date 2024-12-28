@@ -2,6 +2,9 @@
 @use "@styles/mixins" as *;
 
 .contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: var(--colorBlue);
   border-top-right-radius: var(--borderRadiusBig);
   margin-right: 6rem;
@@ -18,9 +21,11 @@
   }
 
   &__top {
+    max-width: 53.75rem;
     padding-top: 5.7rem;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    column-gap: 11.25rem;
     @include tablet {
       flex-direction: column;
       align-items: center;
@@ -42,7 +47,7 @@
   }
 
   &__button {
-    margin: 4.6rem 11.25rem;
+    padding: 1rem 4.7rem;
     @include tablet {
       margin: 2.3rem 5.6rem;
     }
@@ -52,24 +57,29 @@
   }
 
   &__divider {
+    align-self: start;
     margin: 6rem 0;
     border: none;
     border-top: 1px solid var(--colorWhite);
-    width: 80%;
+    width: 84%;
     opacity: 0.2;
     @include tablet {
+      width: 92%;
       margin: 3rem 0;
     }
   }
 
   &__bottom {
+    max-width: 53.75rem;
     display: flex;
-    column-gap: 5rem;
+    column-gap: 7rem;
     padding-bottom: 5rem;
     @include tablet {
+      column-gap: 5rem;
       justify-content: center;
     }
     @include mobile {
+      max-width: 13rem;
       flex-direction: column;
       row-gap: 4rem;
       width: 20rem;
@@ -109,9 +119,11 @@
   }
 
   &__copyright {
+    max-width: 53.75rem;
     display: flex;
+    justify-content: start;
     padding-bottom: 4rem;
-    justify-content: center;
+    width: 100%;
     @include tablet {
       justify-content: center;
     }
@@ -119,5 +131,6 @@
       text-align: center;
     }
   }
+
 }
 

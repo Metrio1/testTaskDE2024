@@ -29,27 +29,26 @@ a {
 }
 
 h1 {
-    @include fluidText(85, 35);
+    @include fluidText(82, 35);
     font-family: 'Times New Roman', sans-serif;
-    letter-spacing: 0.04rem;
-    line-height: 1.16;
+    letter-spacing: 0.07rem;
+    line-height: 1.22;
     font-weight: 700;
 }
 
 h2 {
-    @include fluidText(32, 18);
+    @include fluidText(42, 24);
     font-weight: 600;
     line-height: 1.28;
     color: var(--colorBlue);
 }
 
 h3 {
-    @include fluidText(20, 16);
+    @include fluidText(20, 18);
     font-weight: 600;
     line-height: 1.5;
 }
 
 p {
-    @include fluidText(16, 14);
     opacity: 0.6;
 }

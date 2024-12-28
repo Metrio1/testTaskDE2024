@@ -12,9 +12,9 @@
   }
 
   &__title {
-    max-width: 20rem;
+    position: absolute;
+    max-width: 25rem;
     align-self: start;
-    margin-bottom: -4rem;
     color: var(--colorBlue);
 
     @include desktop {
@@ -22,6 +22,7 @@
     }
 
     @include tablet {
+      position: relative;
       align-self: center;
       text-align: center;
       margin-left: 0;
@@ -47,7 +48,7 @@
 
     &:nth-child(odd) {
       align-self: flex-end;
-      margin-top: -15rem;
+      margin-top: -13.5rem;
 
       @include tablet {
         margin-top: 0;
@@ -57,7 +58,7 @@
 
     &:nth-child(even) {
       align-self: flex-start;
-      margin-top: -12rem;
+      margin-top: -13.5rem;
 
       @include tablet {
         margin-top: 0;

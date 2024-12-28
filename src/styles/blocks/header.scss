@@ -2,12 +2,20 @@
 @use "@styles/mixins" as *;
 
 .header {
-  --headerInnerMaxWidth: 75rem;
+  --headerInnerMaxWidth: 89vw;
   --headerInnerHeight: 3rem;
   padding-top: 2.5rem;
   position: absolute;
   padding-inline: 1.5rem;
   width: 100%;
+
+  @include tablet {
+    padding-top: 1.75rem;
+  }
+
+  @include mobile {
+    padding-top: 1rem;
+  }
 
   &__logo {
     height: 3rem;
