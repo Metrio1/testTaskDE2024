@@ -15,16 +15,19 @@ body {
 a,
 button,
 input,
-textarea,
-svg * {
-    transition-duration: var(--transitionDuration);
+textarea {
+    transition:
+            background-color var(--transitionEffect),
+            color var(--transitionEffect),
+            box-shadow var(--transitionEffect),
+            transform var(--transitionEffect);
 }
 
 
 a {
     @include resetLink();
     @include hover {
-        color: var(--colorDarkBlue);
+        color: var(--colorPrimaryLink);
     }
 }
 

@@ -25,6 +25,8 @@
   @include hover {
     background-color: var(--colorWhite);
     color: var(--colorPrimary);
+    box-shadow: var(--boxShadowButtonHover);
+    transform: scale(1.01);
   }
 }
 
@@ -39,5 +41,7 @@
   @include hover {
     color: var(--colorWhite);
     background-color: var(--colorPrimary);
+    box-shadow: var(--boxShadowButtonHover);
+    transform: scale(1.1);
   }
 }

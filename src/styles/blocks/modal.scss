@@ -82,6 +82,10 @@ body.unlock {
     width: 3rem;
     height: 3rem;
     cursor: pointer;
+    @include hover {
+      transform: scale(1.15);
+    }
+
     @include mobile {
       top: 1rem;
       right: 1.56rem;

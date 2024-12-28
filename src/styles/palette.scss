@@ -1,4 +1,5 @@
 :root {
+  --colorFrenchMauve: #D067C9;
   --colorFireBrick: #B42020;
   --colorHunterGreen: #2D5F22;
   --colorWhiteTransparent: #FFFFFF33;
@@ -12,7 +13,7 @@
   --colorWhiteSmoke: #F2F2F2;
   --colorWhite: #FFFFFF;
 
-  --colorGray: var(--colorDimGray);
+  --colorPrimaryLink: var(--colorFrenchMauve);
   --colorDanger: var(--colorFireBrick);
   --colorSuccess: var(--colorHunterGreen);
   --colorDarkBlue: var(--colorYaleBlue);
@@ -23,8 +24,9 @@
   --colorGrayLight: var(--colorWhiteSmoke);
 
   --boxShadowCard: 5px 20px 50px 0 rgba(16, 112, 177, 0.2);
-  --boxShadowHoverCard: 5px 25px 60px 0 rgba(16, 112, 177, 0.3);
+  --boxShadowCardHover: 5px 25px 60px 0 rgba(16, 112, 177, 0.3);
   --boxShadowButton: 5px 10px 20px 0 rgba(53, 110, 173, 0.2);
+  --boxShadowButtonHover: 5px 10px 20px 0 rgba(53, 110, 173, 0.3);
 
   --gradient: linear-gradient(0deg, rgba(53, 110, 173, 0.15) 0%, var(--colorWhite) 30%);
 }

@@ -5,14 +5,16 @@
   padding: var(--cardPadding);
   border-radius: var(--borderRadius);
   box-shadow: var(--boxShadowCard);
-  transition: transform var(--transitionDuration) ease, box-shadow var(--transitionDuration) ease;
+  transition: transform var(--transitionDuration) ease,
+              box-shadow var(--transitionDuration) ease,
+              opacity var(--transitionDuration) ease;
   @include mobile {
     width: 16.25rem;
     padding: 2.25rem;
   }
   @include hover {
-    transform: translateY(-0.5rem);
-    box-shadow: var(--boxShadowHoverCard)
+    transform: translateY(-0.5rem) scale(1.03);
+    box-shadow: var(--boxShadowCardHover);
   }
 
   &__title {
@@ -26,6 +28,7 @@
 
   &__link {
     display: flex;
+    max-width: 9rem;
     column-gap: 1.5rem;
     color: var(--colorPrimary);
 

@@ -63,6 +63,9 @@
     border-top: 1px solid var(--colorWhite);
     width: 84%;
     opacity: 0.2;
+    @include desktop {
+      width: 88%;
+    }
     @include tablet {
       width: 92%;
       margin: 3rem 0;
