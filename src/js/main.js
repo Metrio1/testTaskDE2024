@@ -1,4 +1,4 @@
-import "../styles/styles.scss";
+import "./styles.js";
 import { ModalManager } from "./modules/ModalManager";
 import { FormHandler } from "./modules/FormHandler.js";
 import { FormValidator } from "./modules/FormValidator.js";
