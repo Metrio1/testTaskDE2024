@@ -1,5 +1,17 @@
 export class ScrollManager {
-    static isLocked = false;
+    static #isLocked = false;
+
+    static get isLocked() {
+        return ScrollManager.#isLocked;
+    }
+
+    static set isLocked(value) {
+        if (typeof value !== "boolean") {
+            console.error("Состояние isLocked должно быть булевым");
+            return;
+        }
+        ScrollManager.#isLocked = value;
+    }
 
     static lock() {
         if (ScrollManager.isLocked) {
