@@ -1,6 +1,7 @@
 import { ModalManager } from "./ModalManager.js";
 import { FormValidator } from "./FormValidator.js";
 import { ScrollManager } from "@/js/utils/ScrollManager.js";
+import { FormSend } from "./FormSend.js";
 
 export class FormHandler {
   static instance;
@@ -17,12 +18,10 @@ export class FormHandler {
     FormHandler.instance = this;
   }
 
-  #handleSubmit(e) {
+  async #handleSubmit(e) {
     const { target, submitter } = e;
-    if (!target.hasAttribute(`${this.attrs.form}`)) {
-      return;
-    }
-    if (target.tagName.toLowerCase() !== "form") {
+
+    if (!target.hasAttribute(this.attrs.form) || target.tagName.toLowerCase() !== "form") {
       return;
     }
 
@@ -39,59 +38,39 @@ export class FormHandler {
       e.preventDefault();
     }
 
-    if (isNeedValidateBeforeSubmit) {
-      const resValidate = FormValidator.getValidationForm(target);
-      if (!resValidate) {
-        return;
-      }
+    if (isNeedValidateBeforeSubmit && !FormValidator.getValidationForm(target)) {
+      return;
     }
 
-    const formData = new FormData(target);
-
     submitter.disabled = true;
+    const formData = new FormData(target);
+    const formSender = new FormSend(url, method);
 
-    // TODO: Можно реализовать конфигурацию формата отправки через data-js-form и обработку перед fetch
-    fetch(url, {
-      method,
-      body: formData,
-      headers: {
-        "Accept": "application/json",
-      },
-    })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Сетевой ответ не успешен");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          target.reset();
+    try {
+      const data = await formSender.send(formData);
+      target.reset();
 
-          console.debug("Успешно:", data);
-          if (showModalAfterSuccess) {
-            ModalManager.open({
-              src: showModalAfterSuccess,
-              type: "selector",
-              isNeedShowBackdrop: false,
-              closeAfterDelay: 2000,
-            });
-            ScrollManager.unlock();
-          }
-        })
-        .catch((error) => {
-          console.error("Ошибка при выполнении запроса:", error);
-        })
-        .finally(() => {
-          submitter.disabled = false;
+      console.debug("Успешно:", data);
+      if (showModalAfterSuccess) {
+        ModalManager.open({
+          src: showModalAfterSuccess,
+          type: "selector",
+          isNeedShowBackdrop: false,
+          closeAfterDelay: 2000,
         });
+        ScrollManager.unlock();
+      }
+    } catch (error) {
+      console.error("Ошибка при выполнении запроса:", error);
+    } finally {
+      submitter.disabled = false;
+    }
   }
 
   #bindEvents() {
     document.addEventListener(
         "submit",
-        (e) => {
-          this.#handleSubmit(e);
-        },
+        (e) => this.#handleSubmit(e),
         true
     );
   }
