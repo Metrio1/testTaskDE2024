@@ -28,11 +28,11 @@ export class ModalManager {
     }
 
     #bindEvents() {
-        document.addEventListener("click", (e) => this.handleClick(e));
-        document.addEventListener("keydown", (e) => this.handleKeyDown(e));
+        document.addEventListener("click", (e) => this.#handleClick(e));
+        document.addEventListener("keydown", (e) => this.#handleKeyDown(e));
     }
 
-    handleClick(event) {
+    #handleClick(event) {
         const modalCloseElement = event.target.closest(`[${ModalManager.attrs.modalClose}]`);
         const target = event.target.closest(`[${ModalManager.attrs.triggerOpen}]`);
         if (target) {
@@ -42,7 +42,7 @@ export class ModalManager {
                 ModalManager.open({ src, type });
             } else {
                 console.error(
-                    "Modal open attributes are missing or invalid:",
+                    "Отсутствуют или некорректны атрибуты для открытия модального окна:",
                     src,
                     type
                 );
@@ -57,7 +57,7 @@ export class ModalManager {
         }
     }
 
-    handleKeyDown(event) {
+    #handleKeyDown(event) {
         if (event.key === "Escape") {
             const [ openInstance ] = ModalManager.getOpenInstance();
             if (openInstance) {
@@ -84,18 +84,18 @@ export class ModalManager {
         } else if (type === "html" && typeof src === "string") {
             modalElement = ModalManager.createModal(src);
         } else {
-            console.error("Invalid modal source or type provided:", src, type);
+            console.error("Неверный источник или тип модального окна:", src, type);
             return;
         }
         if (!modalElement) {
-            console.error("Modal element not found:", src);
+            console.error("Модальное окно не найдено:", src);
             return;
         }
 
         if (ModalManager.backdrop && isNeedShowBackdrop) {
             ModalManager.backdrop.classList.add(ModalManager.stateClasses.isOpen);
         } else if (ModalManager.backdrop) {
-            ModalManager.backdrop.classList.remove((ModalManager.stateClasses.isOpen))
+            ModalManager.backdrop.classList.remove(ModalManager.stateClasses.isOpen);
         }
         modalElement.classList.add(ModalManager.stateClasses.isOpen);
 
@@ -119,7 +119,7 @@ export class ModalManager {
 
     static closeOpenInstance({ isNeedCloseBackdrop = true } = {}) {
         const [ openInstance, state ] = ModalManager.getOpenInstance();
-        console.debug("Open instance:", [ openInstance, state ]);
+        console.debug("Открытое окно:", [ openInstance, state ]);
         if (!openInstance) {
             return;
         }
@@ -142,3 +142,4 @@ export class ModalManager {
         ScrollManager.unlock();
     }
 }
+
