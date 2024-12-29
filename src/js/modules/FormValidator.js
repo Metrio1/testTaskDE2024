@@ -13,11 +13,11 @@ export class FormValidator {
         isValid: "isValid",
     };
 
-
     constructor() {
         if (FormValidator.instance) {
             return FormValidator.instance;
         }
+
         this.inputs = document.querySelectorAll(
             `[${FormValidator.attrs.inputRequired}]`
         );
@@ -26,35 +26,40 @@ export class FormValidator {
     }
 
     #bindEvents() {
-        this.inputs.forEach(input => {
-            const modeAttribute = input.getAttribute(
-                FormValidator.attrs.inputRequiredMode
-            );
-            const modes = modeAttribute
-                ? modeAttribute.trim().replace(" ", "").split(",")
-                : [];
+        document.addEventListener("blur", this.#handleEvent, true);
+        document.addEventListener("focus", this.#handleEvent, true);
+        document.addEventListener("input", this.#handleEvent, true);
+    }
 
-            modes.forEach(mode => {
-                switch (mode) {
-                    case "blur":
-                        input.addEventListener("blur", () => FormValidator.validateInput(input));
-                        break;
-                    case "focus":
-                        input.addEventListener("focus", () => FormValidator.validateInput(input));
-                        break;
-                    case "change":
-                        input.addEventListener("input", () => FormValidator.validateInput(input));
-                        break;
-                }
-            });
-        });
+    #handleEvent(event) {
+        const input = event.target.closest(
+            `[${FormValidator.attrs.inputRequired}]`
+        );
+
+        if (!input) {
+            return;
+        }
+
+        const modeAttribute = input.getAttribute(
+            FormValidator.attrs.inputRequiredMode
+        );
+        const modes = modeAttribute
+            ? modeAttribute.trim().replace(" ", "").split(",")
+            : [];
+
+        if (modes.includes(event.type)) {
+            FormValidator.validateInput(input);
+        }
     }
 
     static getValidationForm(form) {
         let isFormValid = true;
 
-        [ ...form.elements ].forEach(input => {
-            if (input.matches(`[${FormValidator.attrs.inputRequired}]`) && !FormValidator.validateInput(input)) {
+        [ ...form.elements ].forEach((input) => {
+            if (
+                input.matches(`[${FormValidator.attrs.inputRequired}]`) &&
+                !FormValidator.validateInput(input)
+            ) {
                 isFormValid = false;
             }
         });
