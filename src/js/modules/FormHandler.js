@@ -30,6 +30,7 @@ export class FormHandler {
       url,
       method = "POST",
       showModalAfterSuccess,
+      showModalAfterError,
       isNeedPreventDefault = true,
       isNeedValidateBeforeSubmit,
     } = cfg;
@@ -62,6 +63,17 @@ export class FormHandler {
       }
     } catch (error) {
       console.error("Ошибка при выполнении запроса:", error);
+
+      if (showModalAfterError) {
+        ModalManager.open({
+          src: showModalAfterError,
+          type: "selector",
+          isNeedShowBackdrop: true,
+          closeAfterDelay: 3000,
+        });
+      }
+
+      ScrollManager.unlock();
     } finally {
       submitter.disabled = false;
     }

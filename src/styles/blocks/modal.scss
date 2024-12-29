@@ -133,23 +133,25 @@ body.unlock {
     transition: var(--transitionDuration);
   }
 
-  &--isSuccess {
-    --modalBackround: var(--colorSuccess);
+  &Popup {
     --modalMinWidth: 0;
-    position: fixed;
-    opacity: 0;
     top: 0;
-    left: 50%;
     transform: translateX(-50%);
-    background-color: var(--modalBackround);
     color: var(--colorWhite);
     padding: 1.25rem 2rem;
     text-align: center;
-    border-radius: var(--borderRadius);
-    box-shadow: var(--boxShadowButton);
-    font-size: 1rem;
-    z-index: 1000;
-    transition: var(--transitionDuration);
+
+    @include mobile {
+      padding: 0.5rem;
+    }
+
+    &--isSuccess {
+      --modalBackround: var(--colorSuccess);
+    }
+
+    &--isError {
+      --modalBackround: var(--colorDanger);
+    }
 
     &.isOpen {
       opacity: 1;
@@ -159,3 +161,4 @@ body.unlock {
     }
   }
 }
+
