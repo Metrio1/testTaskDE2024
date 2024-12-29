@@ -53,8 +53,11 @@ export class FormValidator {
     static getValidationForm(form) {
         let isFormValid = true;
 
-        isFormValid = ![...form.elements]
-            .some(input => input.matches(`[${FormValidator.attrs.inputRequired}]`) && !FormValidator.validateInput(input));
+        [ ...form.elements ].forEach(input => {
+            if (input.matches(`[${FormValidator.attrs.inputRequired}]`) && !FormValidator.validateInput(input)) {
+                isFormValid = false;
+            }
+        });
 
         return isFormValid;
     }
