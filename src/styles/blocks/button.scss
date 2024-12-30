@@ -26,14 +26,14 @@
   @include hover {
     color: var(--colorPrimary);
     box-shadow: var(--boxShadowButtonHover);
-    transform: scale(1.01);
+
     background-color: var(--colorWhite);
   }
 
   &:active {
     color: var(--colorPrimary);
     background: var(--colorUranianBlue) linear-gradient(to right, var(--colorWhite), var(--colorUranianBlue));
-    transform: scale(0.99);
+
     box-shadow: var(--boxShadowButtonActive);
   }
 }
