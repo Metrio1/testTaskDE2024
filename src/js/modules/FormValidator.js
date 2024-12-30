@@ -47,7 +47,7 @@ export class FormValidator {
             ? modeAttribute.trim().replace(" ", "").split(",")
             : [];
 
-        if (modes.includes(event.type)) {
+        if (event.type === "input" || modes.includes(event.type)) {
             FormValidator.validateInput(input);
         }
     }
@@ -98,9 +98,9 @@ export class FormValidator {
         }
 
         if (!isValid) {
-            FormValidator.showError(row, errorMsgElement, errorMessage);
+            FormValidator.showError(row, errorMsgElement, errorMessage, input);
         } else {
-            FormValidator.hideError(row, errorMsgElement);
+            FormValidator.hideError(row, errorMsgElement, input);
         }
 
         return isValid;
@@ -115,18 +115,26 @@ export class FormValidator {
         return value.trim() !== "";
     }
 
-    static showError(row, errorMsgElement, message) {
+    static showError(row, errorMsgElement, message, input) {
+
         if (row) {
             row.classList.add(FormValidator.stateClasses.isInvalid);
+        }
+        if (input) {
+            input.classList.add("input--invalid");
         }
         if (errorMsgElement) {
             errorMsgElement.textContent = message;
         }
     }
 
-    static hideError(row, errorMsgElement) {
+    static hideError(row, errorMsgElement, input) {
+
         if (row) {
             row.classList.remove(FormValidator.stateClasses.isInvalid);
+        }
+        if (input) {
+            input.classList.remove("input--invalid");
         }
         if (errorMsgElement) {
             errorMsgElement.textContent = "";

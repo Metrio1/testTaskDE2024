@@ -13,6 +13,24 @@ body.unlock {
   width: auto;
 }
 
+.input--invalid {
+  border: 2px solid var(--colorDanger);
+  outline: none;
+}
+
+.input--invalid:focus {
+  border-color: var(--colorDangerDark);
+}
+
+.textarea--invalid {
+  border: 2px solid var(--colorDanger);
+  outline: none;
+}
+
+.textarea--invalid:focus {
+  border-color: var(--colorDangerDark);
+}
+
 .isValid [data-js-error-msg] {
   display: none;
 }
@@ -86,9 +104,13 @@ body.unlock {
       transform: scale(1.15);
     }
 
+    @include tablet {
+      top: 2.4rem;
+      right: 2.6rem;
+    }
     @include mobile {
-      top: 1rem;
-      right: 1.56rem;
+      top: 1.43rem;
+      right: 1.2rem;
     }
 
     &::before,
@@ -142,7 +164,7 @@ body.unlock {
     text-align: center;
 
     @include mobile {
-      padding: 0.5rem;
+      padding: 1rem;
     }
 
     &--isSuccess {
@@ -150,7 +172,7 @@ body.unlock {
     }
 
     &--isError {
-      --modalBackround: var(--colorDanger);
+      --modalBackround: var(--colorDangerDark);
     }
 
     &.isOpen {

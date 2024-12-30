@@ -1,6 +1,7 @@
 :root {
   --colorFrenchMauve: #D067C9;
-  --colorFireBrick: #B42020;
+  --colorVermilion: #FF2E2E;
+  --colorCarmine: #991A1A;
   --colorHunterGreen: #2D5F22;
   --colorWhiteTransparent: #FFFFFF33;
 
@@ -14,7 +15,8 @@
   --colorWhite: #FFFFFF;
 
   --colorPrimaryLink: var(--colorFrenchMauve);
-  --colorDanger: var(--colorFireBrick);
+  --colorDanger: var(--colorVermilion);
+  --colorDangerDark: var(--colorCarmine);
   --colorSuccess: var(--colorHunterGreen);
   --colorDarkBlue: var(--colorYaleBlue);
   --colorBlue: var(--colorLapisLazuli);
