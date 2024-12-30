@@ -22,11 +22,19 @@
       color: var(--colorWhite);
     }
   }
+
   @include hover {
-    background-color: var(--colorWhite);
     color: var(--colorPrimary);
     box-shadow: var(--boxShadowButtonHover);
     transform: scale(1.01);
+    background-color: var(--colorWhite);
+  }
+
+  &:active {
+    color: var(--colorPrimary);
+    background: var(--colorUranianBlue) linear-gradient(to right, var(--colorWhite), var(--colorUranianBlue));
+    transform: scale(0.99);
+    box-shadow: var(--boxShadowButtonActive);
   }
 }
 
@@ -38,6 +46,7 @@
   background: transparent;
   color: var(--colorBlue);
   cursor: pointer;
+
   @include hover {
     color: var(--colorWhite);
     background-color: var(--colorPrimary);

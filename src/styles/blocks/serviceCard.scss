@@ -9,7 +9,7 @@
               box-shadow var(--transitionDuration) ease,
               opacity var(--transitionDuration) ease;
   @include mobile {
-    width: 16.25rem;
+    width: 18rem;
     padding: 2.25rem;
   }
   @include hover {
@@ -28,11 +28,12 @@
 
   &__link {
     display: flex;
+    align-items: center;
     max-width: 9rem;
     column-gap: 1.5rem;
     color: var(--colorPrimary);
 
-    &-icon-wrapper {
+    &IconWrapper {
       display: flex;
       align-items: center;
     }

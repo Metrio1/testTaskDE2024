@@ -11,6 +11,7 @@
   --colorAzul: #356EAD;
   --colorBlueGray: #5A98D0;
   --colorJordyBlue: #98C3E8;
+  --colorUranianBlue: #b3d3f3;
   --colorWhiteSmoke: #F2F2F2;
   --colorWhite: #FFFFFF;
 
@@ -28,7 +29,8 @@
   --boxShadowCard: 5px 20px 50px 0 rgba(16, 112, 177, 0.2);
   --boxShadowCardHover: 5px 25px 60px 0 rgba(16, 112, 177, 0.3);
   --boxShadowButton: 5px 10px 20px 0 rgba(53, 110, 173, 0.2);
-  --boxShadowButtonHover: 5px 10px 20px 0 rgba(53, 110, 173, 0.3);
+  --boxShadowButtonHover: 5px 10px 20px 0 rgba(53, 110, 173, 0.25);
+  --boxShadowButtonActive: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 
   --gradient: linear-gradient(0deg, rgba(53, 110, 173, 0.15) 0%, var(--colorWhite) 30%);
 }
