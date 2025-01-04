@@ -1,7 +1,7 @@
-import { ModalManager } from "./ModalManager.js";
+import { FormConfigReader } from "../utils/FormConfigReader.js";
 import { FormValidator } from "./FormValidator.js";
-import { ScrollManager } from "@/js/utils/ScrollManager.js";
 import { FormSend } from "./FormSend.js";
+import { FormResponseHandler } from "./FormResponseHandler.js";
 
 export class FormHandler {
   static instance;
@@ -19,13 +19,6 @@ export class FormHandler {
     FormHandler.instance = this;
   }
 
-  #cacheFormConfig(form) {
-    if (!form._config) {
-      form._config = JSON.parse(form.getAttribute(this.attrs.form));
-    }
-    return form._config;
-  }
-
   async #handleSubmit(e) {
     const { target, submitter } = e;
 
@@ -38,7 +31,7 @@ export class FormHandler {
       return;
     }
 
-    const cfg = this.#cacheFormConfig(target);
+    const cfg = FormConfigReader.getConfig(target, this.attrs);
     const {
       url,
       method = "POST",
@@ -64,31 +57,9 @@ export class FormHandler {
 
     try {
       await formSender.sendData(new FormData(target));
-      if (isResetAfterSuccess) {
-        target.reset();
-      }
-
-      if (showModalAfterSuccess) {
-        ModalManager.open({
-          src: showModalAfterSuccess,
-          type: "selector",
-          isNeedShowBackdrop: false,
-          closeAfterDelay: 2000,
-        });
-        ScrollManager.unlock();
-      }
+      FormResponseHandler.handleSuccess(target, showModalAfterSuccess, isResetAfterSuccess);
     } catch (error) {
-      console.error("Ошибка при отправке данных:", error);
-
-      if (showModalAfterError) {
-        ModalManager.open({
-          src: showModalAfterError,
-          type: "selector",
-          isNeedShowBackdrop: true,
-          closeAfterDelay: 3000,
-        });
-      }
-      ScrollManager.unlock();
+      FormResponseHandler.handleError(error, showModalAfterError);
     } finally {
       this.isSubmitting = false;
       submitter.disabled = false;
