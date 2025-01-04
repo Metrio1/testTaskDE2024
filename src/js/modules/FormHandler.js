@@ -1,7 +1,5 @@
-import { FormConfigReader } from "../utils/FormConfigReader.js";
 import { FormValidator } from "./FormValidator.js";
 import { FormSend } from "./FormSend.js";
-import { FormResponseHandler } from "./FormResponseHandler.js";
 
 export class FormHandler {
   static instance;
@@ -32,7 +30,7 @@ export class FormHandler {
       return;
     }
 
-    const cfg = FormConfigReader.getConfig(target, this.attrs);
+    const cfg = FormSend.getConfig(target, this.attrs);
     const {
       url,
       method = "POST",
@@ -54,13 +52,15 @@ export class FormHandler {
     this.isSubmittingForms.add(target);
     submitter.disabled = true;
 
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
     const formSender = new FormSend(url, method);
 
     try {
       await formSender.sendData(new FormData(target));
-      FormResponseHandler.handleSuccess(target, showModalAfterSuccess, isResetAfterSuccess);
+      FormSend.handleSuccess(target, showModalAfterSuccess, isResetAfterSuccess);
     } catch (error) {
-      FormResponseHandler.handleError(error, showModalAfterError);
+      FormSend.handleError(error, showModalAfterError);
     } finally {
       this.isSubmittingForms.delete(target);
       submitter.disabled = false;
