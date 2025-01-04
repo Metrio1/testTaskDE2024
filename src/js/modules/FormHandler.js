@@ -53,13 +53,6 @@ export class FormHandler {
     this.isSubmitting = true;
     submitter.disabled = true;
 
-    const preventEnable = (event) => {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    };
-
-    submitter.addEventListener("mousedown", preventEnable, { once: true });
-
     const formSender = new FormSend(target, {
       url,
       method,
@@ -103,8 +96,6 @@ export class FormHandler {
     } finally {
       this.isSubmitting = false;
       submitter.disabled = false;
-
-      submitter.removeEventListener("mousedown", preventEnable);
     }
   }
 
