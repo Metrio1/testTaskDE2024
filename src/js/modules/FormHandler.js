@@ -14,7 +14,8 @@ export class FormHandler {
     if (FormHandler.instance) {
       return FormHandler.instance;
     }
-    this.isSubmitting = false;
+
+    this.isSubmittingForms = new Set();
     this.#bindEvents();
     FormHandler.instance = this;
   }
@@ -26,7 +27,7 @@ export class FormHandler {
       return;
     }
 
-    if (this.isSubmitting) {
+    if (this.isSubmittingForms.has(target)) {
       e.preventDefault();
       return;
     }
@@ -50,7 +51,7 @@ export class FormHandler {
       return;
     }
 
-    this.isSubmitting = true;
+    this.isSubmittingForms.add(target);
     submitter.disabled = true;
 
     const formSender = new FormSend(url, method);
@@ -61,7 +62,7 @@ export class FormHandler {
     } catch (error) {
       FormResponseHandler.handleError(error, showModalAfterError);
     } finally {
-      this.isSubmitting = false;
+      this.isSubmittingForms.delete(target);
       submitter.disabled = false;
     }
   }
