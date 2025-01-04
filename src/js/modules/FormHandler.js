@@ -52,8 +52,6 @@ export class FormHandler {
     this.isSubmittingForms.add(target);
     submitter.disabled = true;
 
-    await new Promise(resolve => setTimeout(resolve, 5000));
-
     const formSender = new FormSend(url, method);
 
     try {
