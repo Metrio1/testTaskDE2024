@@ -9,11 +9,7 @@
   padding-inline: 1.5rem;
   width: 100%;
 
-  @include tablet {
-    padding-top: 1.75rem;
-  }
-
-  @include mobile {
+  @include desktop {
     padding-top: 1rem;
   }
 

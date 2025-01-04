@@ -33,6 +33,7 @@ export class FormHandler {
       showModalAfterError,
       isNeedPreventDefault = true,
       isNeedValidateBeforeSubmit,
+      isResetAfterSuccess = true,
     } = cfg;
 
     if (isNeedPreventDefault) {
@@ -44,36 +45,47 @@ export class FormHandler {
     }
 
     submitter.disabled = true;
-    const formData = new FormData(target);
-    const formSender = new FormSend(url, method);
+
+    const formSender = new FormSend(target, {
+      url,
+      method,
+      showModalAfterSuccess,
+      showModalAfterError,
+      isResetAfterSuccess,
+      onSuccess: (response) => {
+        console.debug("Успешно:", response);
+
+        if (showModalAfterSuccess) {
+          ModalManager.open({
+            src: showModalAfterSuccess,
+            type: "selector",
+            isNeedShowBackdrop: false,
+            closeAfterDelay: 2000,
+          });
+          ScrollManager.unlock();
+        }
+      },
+      onError: (error) => {
+        console.error("Ошибка при выполнении запроса:", error);
+
+        if (showModalAfterError) {
+          ModalManager.open({
+            src: showModalAfterError,
+            type: "selector",
+            isNeedShowBackdrop: true,
+            closeAfterDelay: 3000,
+          });
+        }
+
+        ScrollManager.unlock();
+      },
+    });
 
     try {
-      const data = await formSender.send(formData);
+      await formSender.sendData();
       target.reset();
-
-      console.debug("Успешно:", data);
-      if (showModalAfterSuccess) {
-        ModalManager.open({
-          src: showModalAfterSuccess,
-          type: "selector",
-          isNeedShowBackdrop: false,
-          closeAfterDelay: 2000,
-        });
-        ScrollManager.unlock();
-      }
     } catch (error) {
-      console.error("Ошибка при выполнении запроса:", error);
-
-      if (showModalAfterError) {
-        ModalManager.open({
-          src: showModalAfterError,
-          type: "selector",
-          isNeedShowBackdrop: true,
-          closeAfterDelay: 3000,
-        });
-      }
-
-      ScrollManager.unlock();
+      console.error("Ошибка при отправке данных:", error);
     } finally {
       submitter.disabled = false;
     }
