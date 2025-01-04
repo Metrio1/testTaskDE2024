@@ -1,52 +1,19 @@
 export class FormSend {
-    static attrs = {
-        form: "data-js-form",
-        submitButton: "data-js-submit",
-    };
-
-    #form;
-    #config;
     #url;
     #method;
     #sendInProgress = false;
 
-    constructor(form, config = {}) {
-        this.#form = form;
-        this.#config = config;
-        this.#url = config.url || form.action || window.location.href;
-        this.#method = config.method || form.method || "POST";
-
-        this.#form.addEventListener("submit", (e) => {
-            if (this.#sendInProgress) {
-                e.preventDefault();
-            }
-        });
+    constructor(url, method = "POST") {
+        this.#url = url;
+        this.#method = method;
     }
 
-    #getSubmitButton() {
-        let submitButton = this.#form.querySelector(`[${FormSend.attrs.submitButton}]`);
-
-        if (!submitButton) {
-            submitButton = document.querySelector(`[form="${this.#form.id}"][${FormSend.attrs.submitButton}]`);
-        }
-
-        return submitButton;
-    }
-
-    #setLoadingState(isLoading) {
-        this.#sendInProgress = isLoading;
-        const submitButton = this.#getSubmitButton();
-        if (submitButton) {
-            submitButton.disabled = isLoading;
-        }
-    }
-
-    async sendData() {
+    async sendData(formData) {
         if (this.#sendInProgress) {
-            return;
+            throw new Error("Отправка уже выполняется.");
         }
 
-        this.#setLoadingState(true);
+        this.#sendInProgress = true;
 
         try {
             const options = {
@@ -57,7 +24,7 @@ export class FormSend {
             };
 
             if (this.#method.toLowerCase() !== "get") {
-                options.body = new FormData(this.#form);
+                options.body = formData;
             }
 
             const response = await fetch(this.#url, options);
@@ -66,28 +33,11 @@ export class FormSend {
                 throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
             }
 
-            const data = await response.json();
-            this.#handleSuccess(data);
-            return data;
+            return await response.json();
         } catch (error) {
-            this.#handleError(error);
             throw error;
         } finally {
-            this.#setLoadingState(false);
-        }
-    }
-
-    #handleSuccess(response) {
-        if (this.#config.onSuccess) {
-            this.#config.onSuccess(response);
-        }
-    }
-
-    #handleError(error) {
-        console.error("Ошибка отправки формы:", error);
-
-        if (this.#config.onError) {
-            this.#config.onError(error);
+            this.#sendInProgress = false;
         }
     }
 }

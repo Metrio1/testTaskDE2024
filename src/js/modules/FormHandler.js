@@ -53,46 +53,35 @@ export class FormHandler {
     this.isSubmitting = true;
     submitter.disabled = true;
 
-    const formSender = new FormSend(target, {
-      url,
-      method,
-      showModalAfterSuccess,
-      showModalAfterError,
-      isResetAfterSuccess,
-      onSuccess: (response) => {
-        console.debug("Успешно:", response);
-
-        if (showModalAfterSuccess) {
-          ModalManager.open({
-            src: showModalAfterSuccess,
-            type: "selector",
-            isNeedShowBackdrop: false,
-            closeAfterDelay: 2000,
-          });
-          ScrollManager.unlock();
-        }
-      },
-      onError: (error) => {
-        console.error("Ошибка при выполнении запроса:", error);
-
-        if (showModalAfterError) {
-          ModalManager.open({
-            src: showModalAfterError,
-            type: "selector",
-            isNeedShowBackdrop: true,
-            closeAfterDelay: 3000,
-          });
-        }
-
-        ScrollManager.unlock();
-      },
-    });
-
     try {
-      await formSender.sendData();
-      target.reset();
+      const formSender = new FormSend(url, method);
+      await formSender.sendData(new FormData(target));
+
+      if (showModalAfterSuccess) {
+        ModalManager.open({
+          src: showModalAfterSuccess,
+          type: "selector",
+          isNeedShowBackdrop: false,
+          closeAfterDelay: 2000,
+        });
+        ScrollManager.unlock();
+      }
+
+      if (isResetAfterSuccess) {
+        target.reset();
+      }
     } catch (error) {
       console.error("Ошибка при отправке данных:", error);
+
+      if (showModalAfterError) {
+        ModalManager.open({
+          src: showModalAfterError,
+          type: "selector",
+          isNeedShowBackdrop: true,
+          closeAfterDelay: 3000,
+        });
+      }
+      ScrollManager.unlock();
     } finally {
       this.isSubmitting = false;
       submitter.disabled = false;
