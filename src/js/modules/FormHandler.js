@@ -19,6 +19,13 @@ export class FormHandler {
     FormHandler.instance = this;
   }
 
+  #cacheFormConfig(form) {
+    if (!form._config) {
+      form._config = JSON.parse(form.getAttribute(this.attrs.form));
+    }
+    return form._config;
+  }
+
   async #handleSubmit(e) {
     const { target, submitter } = e;
 
@@ -31,7 +38,7 @@ export class FormHandler {
       return;
     }
 
-    const cfg = JSON.parse(target.getAttribute(this.attrs.form));
+    const cfg = this.#cacheFormConfig(target);
     const {
       url,
       method = "POST",
@@ -53,9 +60,13 @@ export class FormHandler {
     this.isSubmitting = true;
     submitter.disabled = true;
 
+    const formSender = new FormSend(url, method);
+
     try {
-      const formSender = new FormSend(url, method);
       await formSender.sendData(new FormData(target));
+      if (isResetAfterSuccess) {
+        target.reset();
+      }
 
       if (showModalAfterSuccess) {
         ModalManager.open({
@@ -65,10 +76,6 @@ export class FormHandler {
           closeAfterDelay: 2000,
         });
         ScrollManager.unlock();
-      }
-
-      if (isResetAfterSuccess) {
-        target.reset();
       }
     } catch (error) {
       console.error("Ошибка при отправке данных:", error);
@@ -89,10 +96,6 @@ export class FormHandler {
   }
 
   #bindEvents() {
-    document.addEventListener(
-        "submit",
-        (e) => this.#handleSubmit(e),
-        true
-    );
+    document.addEventListener("submit", (e) => this.#handleSubmit(e), true);
   }
 }

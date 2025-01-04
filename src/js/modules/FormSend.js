@@ -2,15 +2,17 @@ export class FormSend {
     #url;
     #method;
     #sendInProgress = false;
+    #headers;
 
-    constructor(url, method = "POST") {
+    constructor(url, method = "POST", headers = {}) {
         this.#url = url;
-        this.#method = method;
+        this.#method = method.toUpperCase();
+        this.#headers = headers;
     }
 
     async sendData(formData) {
         if (this.#sendInProgress) {
-            throw new Error("Отправка уже выполняется.");
+            return;
         }
 
         this.#sendInProgress = true;
@@ -20,10 +22,11 @@ export class FormSend {
                 method: this.#method,
                 headers: {
                     "Accept": "application/json",
+                    ...this.#headers,
                 },
             };
 
-            if (this.#method.toLowerCase() !== "get") {
+            if (this.#method !== "GET") {
                 options.body = formData;
             }
 
