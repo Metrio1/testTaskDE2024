@@ -14,6 +14,7 @@ export class FormHandler {
     if (FormHandler.instance) {
       return FormHandler.instance;
     }
+    this.isSubmitting = false;
     this.#bindEvents();
     FormHandler.instance = this;
   }
@@ -22,6 +23,11 @@ export class FormHandler {
     const { target, submitter } = e;
 
     if (!target.hasAttribute(this.attrs.form) || target.tagName.toLowerCase() !== "form") {
+      return;
+    }
+
+    if (this.isSubmitting) {
+      e.preventDefault();
       return;
     }
 
@@ -44,7 +50,15 @@ export class FormHandler {
       return;
     }
 
+    this.isSubmitting = true;
     submitter.disabled = true;
+
+    const preventEnable = (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    };
+
+    submitter.addEventListener("mousedown", preventEnable, { once: true });
 
     const formSender = new FormSend(target, {
       url,
@@ -87,7 +101,10 @@ export class FormHandler {
     } catch (error) {
       console.error("Ошибка при отправке данных:", error);
     } finally {
+      this.isSubmitting = false;
       submitter.disabled = false;
+
+      submitter.removeEventListener("mousedown", preventEnable);
     }
   }
 

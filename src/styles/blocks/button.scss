@@ -17,24 +17,20 @@
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+  &:not(:disabled) {
     @include hover {
-      background-color: var(--colorPrimary);
-      color: var(--colorWhite);
+      color: var(--colorPrimary);
+      box-shadow: var(--boxShadowButtonHover);
+      background-color: var(--colorWhite);
     }
-  }
 
-  @include hover {
-    color: var(--colorPrimary);
-    box-shadow: var(--boxShadowButtonHover);
-
-    background-color: var(--colorWhite);
-  }
-
-  &:active {
-    color: var(--colorPrimary);
-    background: var(--colorUranianBlue) linear-gradient(to right, var(--colorWhite), var(--colorUranianBlue));
-
-    box-shadow: var(--boxShadowButtonActive);
+    &:active {
+      color: var(--colorPrimary);
+      background: var(--colorUranianBlue) linear-gradient(to right, var(--colorWhite), var(--colorUranianBlue));
+      box-shadow: var(--boxShadowButtonActive);
+    }
   }
 }
 
