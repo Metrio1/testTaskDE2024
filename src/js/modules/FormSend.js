@@ -6,11 +6,13 @@ export class FormSend {
     #method;
     #sendInProgress = false;
     #headers;
+    #modalManager;
 
-    constructor(url, method = "POST", headers = {}) {
+    constructor(url, method = "POST", headers = {}, modalManagerInstance = null) {
         this.#url = url;
         this.#method = method.toUpperCase();
         this.#headers = headers;
+        this.#modalManager = modalManagerInstance || new ModalManager();
     }
 
     static getConfig(form, attrs) {
@@ -63,7 +65,7 @@ export class FormSend {
         }
 
         if (showModalAfterSuccess) {
-            ModalManager.open({
+            this.#modalManager.open({
                 src: showModalAfterSuccess,
                 type: "selector",
                 isNeedShowBackdrop: false,
@@ -77,7 +79,7 @@ export class FormSend {
         console.error("Ошибка при отправке данных:", error);
 
         if (showModalAfterError) {
-            ModalManager.open({
+            this.#modalManager.open({
                 src: showModalAfterError,
                 type: "selector",
                 isNeedShowBackdrop: true,

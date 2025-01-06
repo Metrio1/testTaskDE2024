@@ -1,8 +1,10 @@
 import { FormValidator } from "./FormValidator.js";
 import { FormSend } from "./FormSend.js";
+import { ModalManager } from "./ModalManager.js";
 
 export class FormHandler {
   static instance;
+  #modalManager;
 
   attrs = {
     form: "data-js-form",
@@ -14,6 +16,7 @@ export class FormHandler {
     }
 
     this.isSubmittingForms = new Set();
+    this.#modalManager = new ModalManager();
     this.#bindEvents();
     FormHandler.instance = this;
   }
@@ -52,7 +55,7 @@ export class FormHandler {
     this.isSubmittingForms.add(target);
     submitter.disabled = true;
 
-    const formSender = new FormSend(url, method);
+    const formSender = new FormSend(url, method, {}, this.#modalManager);
 
     try {
       await formSender.sendData(target, new FormData(target), {
