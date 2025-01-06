@@ -55,10 +55,11 @@ export class FormHandler {
     const formSender = new FormSend(url, method);
 
     try {
-      await formSender.sendData(new FormData(target));
-      FormSend.handleSuccess(target, showModalAfterSuccess, isResetAfterSuccess);
-    } catch (error) {
-      FormSend.handleError(error, showModalAfterError);
+      await formSender.sendData(target, new FormData(target), {
+        showModalAfterSuccess,
+        showModalAfterError,
+        isResetAfterSuccess,
+      });
     } finally {
       this.isSubmittingForms.delete(target);
       submitter.disabled = false;

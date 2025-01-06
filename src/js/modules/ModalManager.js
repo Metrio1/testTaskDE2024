@@ -2,8 +2,6 @@
 import { ScrollManager } from "../utils/ScrollManager.js";
 
 export class ModalManager {
-    static instance = null;
-
     static stateClasses = {
         isOpen: "isOpen",
         baseClass: "modal",
@@ -19,12 +17,8 @@ export class ModalManager {
     static backdrop = null;
 
     constructor() {
-        if (ModalManager.instance) {
-            return ModalManager.instance;
-        }
         ModalManager.backdrop = document.querySelector("[data-js-modal-backdrop]");
         this.#bindEvents();
-        ModalManager.instance = this;
     }
 
     #bindEvents() {

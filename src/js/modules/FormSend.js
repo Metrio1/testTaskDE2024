@@ -20,7 +20,7 @@ export class FormSend {
         return form._config;
     }
 
-    async sendData(formData) {
+    async sendData(form, formData, { showModalAfterSuccess, showModalAfterError, isResetAfterSuccess }) {
         if (this.#sendInProgress) {
             return;
         }
@@ -46,15 +46,18 @@ export class FormSend {
                 throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
             }
 
-            return await response.json();
+            const result = await response.json();
+            this.#handleSuccess(form, showModalAfterSuccess, isResetAfterSuccess);
+            return result;
         } catch (error) {
+            this.#handleError(error, showModalAfterError);
             throw error;
         } finally {
             this.#sendInProgress = false;
         }
     }
 
-    static handleSuccess(form, showModalAfterSuccess, isResetAfterSuccess) {
+    #handleSuccess(form, showModalAfterSuccess, isResetAfterSuccess) {
         if (isResetAfterSuccess) {
             form.reset();
         }
@@ -70,7 +73,7 @@ export class FormSend {
         }
     }
 
-    static handleError(error, showModalAfterError) {
+    #handleError(error, showModalAfterError) {
         console.error("Ошибка при отправке данных:", error);
 
         if (showModalAfterError) {
