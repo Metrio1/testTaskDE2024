@@ -30,20 +30,7 @@ export class FormSend {
         this.#sendInProgress = true;
 
         try {
-            const options = {
-                method: this.#method,
-                headers: {
-                    "Accept": "application/json",
-                    ...this.#headers,
-                },
-            };
-
-            if (this.#method !== "GET") {
-                options.body = formData;
-            }
-
-            const response = await fetch(this.#url, options);
-
+            const response = await fetch(this.#url, this.#getRequestOptions(formData));
             if (!response.ok) {
                 throw new Error(`Ошибка сети: ${response.status} ${response.statusText}`);
             }
@@ -59,31 +46,43 @@ export class FormSend {
         }
     }
 
+    #getRequestOptions(formData) {
+        const options = {
+            method: this.#method,
+            headers: {
+                "Accept": "application/json",
+                ...this.#headers,
+            },
+        };
+
+        if (this.#method !== "GET") {
+            options.body = formData;
+        }
+
+        return options;
+    }
+
     #handleSuccess(form, showModalAfterSuccess, isResetAfterSuccess) {
         if (isResetAfterSuccess) {
             form.reset();
         }
 
-        if (showModalAfterSuccess) {
-            this.#modalManager.open({
-                src: showModalAfterSuccess,
-                type: "selector",
-                isNeedShowBackdrop: false,
-                closeAfterDelay: 2000,
-            });
-            ScrollManager.unlock();
-        }
+        this.#openModal(showModalAfterSuccess, false, 2000);
     }
 
     #handleError(error, showModalAfterError) {
         console.error("Ошибка при отправке данных:", error);
 
-        if (showModalAfterError) {
+        this.#openModal(showModalAfterError, true, 3000);
+    }
+
+    #openModal(src, isNeedShowBackdrop, closeAfterDelay) {
+        if (src) {
             this.#modalManager.open({
-                src: showModalAfterError,
+                src,
                 type: "selector",
-                isNeedShowBackdrop: true,
-                closeAfterDelay: 3000,
+                isNeedShowBackdrop,
+                closeAfterDelay,
             });
         }
         ScrollManager.unlock();
