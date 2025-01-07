@@ -41,21 +41,18 @@ export class ModalManager {
                 );
             }
         } else if (modalCloseElement) {
-            this.closeOpenInstance();
+            this.close();
         } else {
             const [ openInstance ] = this.getOpenInstance();
             if (openInstance && !openInstance.contains(event.target)) {
-                this.closeOpenInstance();
+                this.close();
             }
         }
     }
 
     #handleKeyDown(event) {
         if (event.key === "Escape") {
-            const [ openInstance ] = this.getOpenInstance();
-            if (openInstance) {
-                this.closeOpenInstance();
-            }
+            this.close();
         }
     }
 
@@ -69,7 +66,7 @@ export class ModalManager {
     }
 
     open({ src, type, isNeedShowBackdrop = true, closeAfterDelay } = {}) {
-        this.closeOpenInstance();
+        this.close();
 
         let modalElement;
         if (type === "selector") {
@@ -78,11 +75,12 @@ export class ModalManager {
             modalElement = this.#createModal(src);
         } else {
             console.error("Неверный источник или тип модального окна:", src, type);
-            return;
+            return null;
         }
+
         if (!modalElement) {
             console.error("Модальное окно не найдено:", src);
-            return;
+            return null;
         }
 
         if (this.#backdrop && isNeedShowBackdrop) {
@@ -90,16 +88,18 @@ export class ModalManager {
         } else if (this.#backdrop) {
             this.#backdrop.classList.remove(ModalManager.stateClasses.isOpen);
         }
-        modalElement.classList.add(ModalManager.stateClasses.isOpen);
 
+        modalElement.classList.add(ModalManager.stateClasses.isOpen);
         this.#instances.set(modalElement, { isOpen: true, type });
         this.#scrollLock();
 
         if (closeAfterDelay) {
             setTimeout(() => {
-                this.closeOpenInstance();
+                this.close(modalElement);
             }, closeAfterDelay);
         }
+
+        return modalElement;
     }
 
     #createModal(html) {
@@ -110,19 +110,28 @@ export class ModalManager {
         return modalElement;
     }
 
-    closeOpenInstance({ isNeedCloseBackdrop = true } = {}) {
-        const [ openInstance, state ] = this.getOpenInstance();
-        if (!openInstance) {
+    close(modalElement = null, { isNeedCloseBackdrop = true } = {}) {
+        const [ openInstance ] = this.getOpenInstance();
+
+        const modalToClose = modalElement || openInstance;
+
+        if (!modalToClose) {
             return;
         }
+
+        const state = this.#instances.get(modalToClose);
+        if (!state) {
+            return;
+        }
+
         if (isNeedCloseBackdrop && this.#backdrop) {
             this.#backdrop.classList.remove(ModalManager.stateClasses.isOpen);
         }
-        openInstance.classList.remove(ModalManager.stateClasses.isOpen);
+        modalToClose.classList.remove(ModalManager.stateClasses.isOpen);
         if (state.type === "html") {
-            document.body.removeChild(openInstance);
+            document.body.removeChild(modalToClose);
         }
-        this.#instances.delete(openInstance);
+        this.#instances.delete(modalToClose);
         this.#scrollUnlock();
     }
 
