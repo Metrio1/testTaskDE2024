@@ -44,10 +44,10 @@ export class FormValidator {
             FormValidator.attrs.inputRequiredMode
         );
         const modes = modeAttribute
-            ? modeAttribute.trim().replace(" ", "").split(",")
+            ? modeAttribute.trim().split(/\s*,\s*/)
             : [];
 
-        if (event.type === "input" || modes.includes(event.type)) {
+        if (modes.includes(event.type) || event.type === "input") {
             FormValidator.validateInput(input);
         }
     }
@@ -71,37 +71,29 @@ export class FormValidator {
         const validationType = input.getAttribute(
             FormValidator.attrs.inputRequired
         );
+
+        const validators = {
+            name: () => FormValidator.validateText(input.value),
+            email: () => FormValidator.validateEmail(input.value),
+        };
+
+        const errorMessages = {
+            name: "Введите корректное имя",
+            email: "Введите корректный адрес электронной почты",
+            message: "Это поле обязательно для заполнения",
+        };
+
+        const isValid = validators[validationType]?.() ?? FormValidator.validateText(input.value);
+        const errorMessage = errorMessages[validationType] || "Это поле обязательно для заполнения";
+
         const errorMsgElement = input
             .closest(`[${FormValidator.attrs.row}]`)
-            .querySelector(`[${FormValidator.attrs.error}]`);
-
+            ?.querySelector(`[${FormValidator.attrs.error}]`);
         const row = input.closest(`[${FormValidator.attrs.row}]`);
 
-        let isValid;
-        let errorMessage = "";
-
-        switch (validationType) {
-            case "name":
-                isValid = FormValidator.validateText(input.value);
-                errorMessage = "Введите корректное имя";
-                break;
-            case "email":
-                isValid = FormValidator.validateEmail(input.value);
-                errorMessage = "Введите корректный адрес электронной почты";
-                break;
-            case "message":
-                isValid = FormValidator.validateText(input.value);
-                errorMessage = "Это поле обязательно для заполнения";
-                break;
-            default:
-                isValid = true;
-        }
-
-        if (!isValid) {
-            FormValidator.showError(row, errorMsgElement, errorMessage, input);
-        } else {
-            FormValidator.hideError(row, errorMsgElement, input);
-        }
+        isValid
+            ? FormValidator.hideError(row, errorMsgElement, input)
+            : FormValidator.showError(row, errorMsgElement, errorMessage, input);
 
         return isValid;
     }
