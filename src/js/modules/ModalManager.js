@@ -75,7 +75,7 @@ export class ModalManager {
         if (type === "selector") {
             modalElement = document.querySelector(src);
         } else if (type === "html" && typeof src === "string") {
-            modalElement = this.createModal(src);
+            modalElement = this.#createModal(src);
         } else {
             console.error("Неверный источник или тип модального окна:", src, type);
             return;
@@ -93,7 +93,7 @@ export class ModalManager {
         modalElement.classList.add(ModalManager.stateClasses.isOpen);
 
         this.#instances.set(modalElement, { isOpen: true, type });
-        this.scrollLock();
+        this.#scrollLock();
 
         if (closeAfterDelay) {
             setTimeout(() => {
@@ -102,7 +102,7 @@ export class ModalManager {
         }
     }
 
-    createModal(html) {
+    #createModal(html) {
         const modalElement = document.createElement("div");
         modalElement.classList.add(ModalManager.stateClasses.baseClass);
         modalElement.innerHTML = html;
@@ -123,14 +123,14 @@ export class ModalManager {
             document.body.removeChild(openInstance);
         }
         this.#instances.delete(openInstance);
-        this.scrollUnlock();
+        this.#scrollUnlock();
     }
 
-    scrollLock() {
+    #scrollLock() {
         ScrollManager.lock();
     }
 
-    scrollUnlock() {
+    #scrollUnlock() {
         ScrollManager.unlock();
     }
 }

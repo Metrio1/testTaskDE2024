@@ -13,22 +13,28 @@ body.unlock {
   width: auto;
 }
 
-.input--invalid {
-  border: 2px solid var(--colorDanger);
-  outline: none;
+.input {
+
+  &--invalid {
+    border: 2px solid var(--colorDanger);
+    outline: none;
+
+    &:focus {
+      border-color: var(--colorDangerDark);
+    }
+  }
 }
 
-.input--invalid:focus {
-  border-color: var(--colorDangerDark);
-}
+.textarea {
 
-.textarea--invalid {
-  border: 2px solid var(--colorDanger);
-  outline: none;
-}
+  &--invalid {
+    border: 2px solid var(--colorDanger);
+    outline: none;
 
-.textarea--invalid:focus {
-  border-color: var(--colorDangerDark);
+    &:focus {
+      border-color: var(--colorDangerDark);
+    }
+  }
 }
 
 .isValid [data-js-error-msg] {
@@ -152,7 +158,7 @@ body.unlock {
     opacity: 1;
     top: 50%;
     visibility: visible;
-    transition: var(--transitionDuration);
+    transition: var(--transitionEffect);
   }
 
   &Popup {
@@ -179,8 +185,7 @@ body.unlock {
       opacity: 1;
       top: 1rem;
       visibility: visible;
-      transition: var(--transitionDuration);
+      transition: var(--transitionEffect);
     }
   }
 }
-
