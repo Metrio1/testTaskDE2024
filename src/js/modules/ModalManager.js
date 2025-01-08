@@ -28,18 +28,13 @@ export class ModalManager {
     #handleClick(event) {
         const modalCloseElement = event.target.closest(`[${ModalManager.attrs.modalClose}]`);
         const target = event.target.closest(`[${ModalManager.attrs.triggerOpen}]`);
+
         if (target) {
             const src = target.getAttribute(ModalManager.attrs.triggerOpen);
             const type = target.getAttribute(ModalManager.attrs.modalType);
-            if (src && type) {
-                this.open({ src, type });
-            } else {
-                console.error(
-                    "Отсутствуют или некорректны атрибуты для открытия модального окна:",
-                    src,
-                    type
-                );
-            }
+            src && type
+                ? this.open({ src, type })
+                : console.error("Отсутствуют или некорректны атрибуты для открытия модального окна:", src, type);
         } else if (modalCloseElement) {
             this.close();
         } else {
@@ -68,12 +63,15 @@ export class ModalManager {
     open({ src, type, isNeedShowBackdrop = true, closeAfterDelay } = {}) {
         this.close();
 
-        let modalElement = this.#getModalElement(src, type);
+        const modalElement = this.#getModalElement(src, type);
         if (!modalElement) {
             return null;
         }
 
-        this.#toggleBackdrop(isNeedShowBackdrop);
+        if (this.#backdrop && isNeedShowBackdrop) {
+            this.#backdrop.classList.add(ModalManager.stateClasses.isOpen);
+        }
+
         modalElement.classList.add(ModalManager.stateClasses.isOpen);
         this.#instances.set(modalElement, { isOpen: true, type });
         this.#scrollLock();
@@ -104,12 +102,6 @@ export class ModalManager {
         return modalElement;
     }
 
-    #toggleBackdrop(isNeedShowBackdrop) {
-        if (this.#backdrop) {
-            this.#backdrop.classList.toggle(ModalManager.stateClasses.isOpen, isNeedShowBackdrop);
-        }
-    }
-
     close(modalElement = null, { isNeedCloseBackdrop = true } = {}) {
         const [ openInstance ] = this.getOpenInstance();
         const modalToClose = modalElement || openInstance;
@@ -126,6 +118,7 @@ export class ModalManager {
         if (isNeedCloseBackdrop && this.#backdrop) {
             this.#backdrop.classList.remove(ModalManager.stateClasses.isOpen);
         }
+
         modalToClose.classList.remove(ModalManager.stateClasses.isOpen);
         if (state.type === "html") {
             document.body.removeChild(modalToClose);

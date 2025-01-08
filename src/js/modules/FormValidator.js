@@ -40,12 +40,8 @@ export class FormValidator {
             return;
         }
 
-        const modeAttribute = input.getAttribute(
-            FormValidator.attrs.inputRequiredMode
-        );
-        const modes = modeAttribute
-            ? modeAttribute.trim().split(/\s*,\s*/)
-            : [];
+        const modeAttribute = input.getAttribute(FormValidator.attrs.inputRequiredMode);
+        const modes = modeAttribute ? modeAttribute.trim().split(/\s*,\s*/) : [];
 
         if (modes.includes(event.type) || event.type === "input") {
             FormValidator.validateInput(input);
@@ -56,10 +52,7 @@ export class FormValidator {
         let isFormValid = true;
 
         [ ...form.elements ].forEach((input) => {
-            if (
-                input.matches(`[${FormValidator.attrs.inputRequired}]`) &&
-                !FormValidator.validateInput(input)
-            ) {
+            if (input.matches(`[${FormValidator.attrs.inputRequired}]`) && !FormValidator.validateInput(input)) {
                 isFormValid = false;
             }
         });
@@ -68,9 +61,7 @@ export class FormValidator {
     }
 
     static validateInput(input) {
-        const validationType = input.getAttribute(
-            FormValidator.attrs.inputRequired
-        );
+        const validationType = input.getAttribute(FormValidator.attrs.inputRequired);
 
         const validators = {
             name: () => FormValidator.validateText(input.value),
@@ -86,10 +77,8 @@ export class FormValidator {
         const isValid = validators[validationType]?.() ?? FormValidator.validateText(input.value);
         const errorMessage = errorMessages[validationType] || "Это поле обязательно для заполнения";
 
-        const errorMsgElement = input
-            .closest(`[${FormValidator.attrs.row}]`)
-            ?.querySelector(`[${FormValidator.attrs.error}]`);
         const row = input.closest(`[${FormValidator.attrs.row}]`);
+        const errorMsgElement = row?.querySelector(`[${FormValidator.attrs.error}]`);
 
         isValid
             ? FormValidator.hideError(row, errorMsgElement, input)
@@ -108,7 +97,6 @@ export class FormValidator {
     }
 
     static showError(row, errorMsgElement, message, input) {
-
         if (row) {
             row.classList.add(FormValidator.stateClasses.isInvalid);
         }
@@ -121,7 +109,6 @@ export class FormValidator {
     }
 
     static hideError(row, errorMsgElement, input) {
-
         if (row) {
             row.classList.remove(FormValidator.stateClasses.isInvalid);
         }

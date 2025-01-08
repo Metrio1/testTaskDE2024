@@ -4,7 +4,6 @@ import { ScrollManager } from "@/js/utils/ScrollManager.js";
 export class FormSend {
     #url;
     #method;
-    #sendInProgress = false;
     #headers;
     #modalManager;
 
@@ -23,12 +22,6 @@ export class FormSend {
     }
 
     async sendData(form, formData, { showModalAfterSuccess, showModalAfterError, isResetAfterSuccess }) {
-        if (this.#sendInProgress) {
-            return;
-        }
-
-        this.#sendInProgress = true;
-
         try {
             const response = await fetch(this.#url, this.#getRequestOptions(formData));
             if (!response.ok) {
@@ -41,8 +34,6 @@ export class FormSend {
         } catch (error) {
             this.#handleError(error, showModalAfterError);
             throw error;
-        } finally {
-            this.#sendInProgress = false;
         }
     }
 
