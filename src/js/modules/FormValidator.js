@@ -44,7 +44,15 @@ export class FormValidator {
         const modes = modeAttribute ? modeAttribute.trim().split(/\s*,\s*/) : [];
 
         if (modes.includes(event.type) || event.type === "input") {
-            FormValidator.validateInput(input);
+
+            if (input.getAttribute(FormValidator.attrs.inputRequired) === "email") {
+                clearTimeout(input.emailValidationTimeout);
+                input.emailValidationTimeout = setTimeout(() => {
+                    FormValidator.validateInput(input);
+                }, 500);
+            } else {
+                FormValidator.validateInput(input);
+            }
         }
     }
 
