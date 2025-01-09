@@ -137,10 +137,18 @@
 
   &__info {
     margin-right: 8.9rem;
+
+    @include tablet {
+      margin: 0;
+    }
   }
 
   &__about {
     margin-right: 4.8rem;
+
+    @include tablet {
+      margin: 0;
+    }
   }
 
   &__copyright {
