@@ -21,15 +21,15 @@
 
   &:not(:disabled) {
     @include hover {
-      color: var(--colorPrimary);
-      box-shadow: var(--boxShadowButtonHover);
-      background-color: var(--colorWhite);
+      color: var(--colorWhite);
+      box-shadow: var(--boxShadowButton);
+      background-color: var(--colorButtonHover);
     }
 
     &:active {
-      color: var(--colorPrimary);
-      background: var(--colorUranianBlue) linear-gradient(to right, var(--colorWhite), var(--colorUranianBlue));
-      box-shadow: var(--boxShadowButtonActive);
+      color: var(--colorWhite);
+      box-shadow: var(--boxShadowButton);
+      background-color: var(--colorButtonActive);
     }
   }
 }
@@ -44,8 +44,10 @@
   cursor: pointer;
 
   @include hover {
-    color: var(--colorWhite);
-    background-color: var(--colorPrimary);
-    box-shadow: var(--boxShadowButtonHover);
+    background-color: var(--colorBurgerButtonHover);
+  }
+
+  &:active {
+    background-color: var(--colorBurgerButtonActive);
   }
 }

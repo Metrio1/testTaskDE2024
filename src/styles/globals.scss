@@ -6,7 +6,7 @@ body {
     font-family: var(--fontFamilyBase);
     font-weight: 400;
     font-size: var(--baseFontSize);
-    line-height: 1.6;
+    line-height: 1.62;
     letter-spacing: var(--lineSpacingBase);
     color: var(--colorDarkBlue);
     background-color: var(--colorWhite);
@@ -32,7 +32,7 @@ a {
 }
 
 h1 {
-    @include fluidText(82, 35);
+    @include fluidText(64, 35);
     font-family: 'Times New Roman', sans-serif;
     letter-spacing: 0.07rem;
     line-height: 1.22;
@@ -40,18 +40,23 @@ h1 {
 }
 
 h2 {
-    @include fluidText(42, 24);
+    font-size: 36px;
+    //@include fluidText(36, 30);
     font-weight: 600;
     line-height: 1.28;
+    letter-spacing: 0.1rem;
     color: var(--colorBlue);
 }
 
 h3 {
-    @include fluidText(20, 18);
+    font-size: 20px;
     font-weight: 600;
+    letter-spacing: 0.06rem;
     line-height: 1.5;
 }
 
 p {
     opacity: 0.6;
+    line-height: 1.62;
+    letter-spacing: var(--lineSpacingBase);
 }

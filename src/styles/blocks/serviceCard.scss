@@ -30,6 +30,11 @@
     display: flex;
     align-items: center;
     max-width: 9rem;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 2.14;
+    letter-spacing: 0.05rem;
+    height: 1.875rem;
     column-gap: 1.5rem;
     color: var(--colorPrimary);
 
@@ -42,7 +47,7 @@
 
 .icon {
   &__manWithList {
-    margin: 0 4.75rem 3.5rem 1.6rem;
+    margin: 0 4.75rem 3.5rem 0.94rem;
     @include mobile {
       margin-inline: 0;
       margin-bottom: 1.25rem;
@@ -50,7 +55,7 @@
   }
 
   &__womanWithSmartHome {
-    margin: -4.5rem 1.9rem 3.2rem;
+    margin: -4.45rem 1.2rem 3.2rem;
     @include mobile {
       margin-left: 0.5rem;
       margin-bottom: 1rem;
@@ -58,7 +63,7 @@
   }
 
   &__womanWithLaptop {
-    margin: 0 4.75rem 3.5rem 3.25rem;
+    margin: 0 4.5rem 3.5rem 2.33rem;
     @include mobile {
       margin-inline: 0;
       margin-bottom: 1.25rem;

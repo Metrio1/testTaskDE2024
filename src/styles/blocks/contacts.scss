@@ -17,25 +17,37 @@
 
   &__contact {
     display: flex;
-    column-gap: 1rem;
+    column-gap: 1.22rem;
   }
 
   &__top {
     max-width: 53.75rem;
     padding-top: 5.7rem;
+    padding-bottom: 6rem;
     display: flex;
     align-items: center;
     column-gap: 11.25rem;
+    position: relative;
     @include tablet {
       flex-direction: column;
       align-items: center;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      background-color: var(--colorWhiteTransparent);
+      height: 2px;
+      left: -50vw;
+      width: calc(100% + 50vw);
+      bottom: 0;
     }
   }
 
   &__text {
     display: flex;
     flex-direction: column;
-    row-gap: 2rem;
+    row-gap: 2.5rem;
     max-width: 80vw;
     @include tablet {
       text-align: center;
@@ -43,7 +55,16 @@
   }
 
   &__title {
+    width: 21rem;
     color: var(--colorWhite);
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &__description {
+    --paragraphMarginBottom: 0;
   }
 
   &__button {
@@ -56,27 +77,11 @@
     }
   }
 
-  &__divider {
-    align-self: start;
-    margin: 6rem 0;
-    border: none;
-    border-top: 1px solid var(--colorWhite);
-    width: 84%;
-    opacity: 0.2;
-    @include desktop {
-      width: 88%;
-    }
-    @include tablet {
-      width: 92%;
-      margin: 3rem 0;
-    }
-  }
-
   &__bottom {
     max-width: 53.75rem;
     display: flex;
-    column-gap: 7rem;
-    padding-bottom: 5rem;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
     @include tablet {
       column-gap: 5rem;
       justify-content: center;
@@ -96,7 +101,7 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.1rem;
   }
 
   &__column {
@@ -113,19 +118,36 @@
       width: 100%;
     }
 
+    &List {
+      row-gap: 1.5rem;
+    }
+
     &Brand {
+      margin-bottom: 0.5rem;
       align-items: center;
       @include mobile {
         justify-content: center;
       }
+
+      &Label {
+        font-size: 1.75rem;
+      }
     }
+  }
+
+  &__info {
+    margin-right: 8.9rem;
+  }
+
+  &__about {
+    margin-right: 4.8rem;
   }
 
   &__copyright {
     max-width: 53.75rem;
     display: flex;
     justify-content: start;
-    padding-bottom: 4rem;
+    padding-bottom: 2.5rem;
     width: 100%;
     @include tablet {
       justify-content: center;

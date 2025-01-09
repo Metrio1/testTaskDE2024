@@ -13,6 +13,7 @@
 
   &__title {
     position: absolute;
+    padding-top: 1rem;
     max-width: 25rem;
     align-self: start;
     color: var(--colorBlue);
@@ -35,6 +36,7 @@
     width: var(--containerWidth);
     display: flex;
     flex-direction: column;
+    padding-top: 1rem;
     padding-left: 5rem;
 
     @include tablet {
@@ -48,7 +50,7 @@
 
     &:nth-child(odd) {
       align-self: flex-end;
-      margin-top: -13.5rem;
+      margin-top: -12.4rem;
 
       @include tablet {
         margin-top: 0;
@@ -58,7 +60,7 @@
 
     &:nth-child(even) {
       align-self: flex-start;
-      margin-top: -13.5rem;
+      margin-top: -14.5rem;
 
       @include tablet {
         margin-top: 0;
