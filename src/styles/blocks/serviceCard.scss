@@ -13,7 +13,7 @@
     padding: 2.25rem;
   }
   @include hover {
-    transform: translateY(-0.5rem) scale(1.03);
+    transform: translateY(-0.3rem);
     box-shadow: var(--boxShadowCardHover);
   }
 

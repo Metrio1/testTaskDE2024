@@ -32,10 +32,10 @@ a {
 }
 
 h1 {
-    @include fluidText(64, 35);
+    @include fluidText(55, 35);
     font-family: 'Times New Roman', sans-serif;
-    letter-spacing: 0.07rem;
-    line-height: 1.22;
+    letter-spacing: 0.17rem;
+    line-height: 1.37;
     font-weight: 700;
 }
 
