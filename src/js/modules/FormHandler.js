@@ -1,10 +1,12 @@
-import { FormValidator } from "./FormValidator.js";
-import { FormSend } from "./FormSend.js";
-import { ModalManager } from "./ModalManager.js";
+import { FormSend } from "@/js/modules/FormSend.js";
+import { FormValidator } from "@/js/modules/FormValidator.js";
+import { ModalManager } from "@/js/modules/ModalManager.js";
+import { FormProcessor } from "@/js/modules/FormProcessor.js";
 
 export class FormHandler {
   static instance;
   #modalManager;
+  #formProcessor;
 
   attrs = {
     form: "data-js-form",
@@ -15,8 +17,8 @@ export class FormHandler {
       return FormHandler.instance;
     }
 
-    this.isSubmittingForms = new Set();
     this.#modalManager = new ModalManager();
+    this.#formProcessor = new FormProcessor(this.#modalManager);
     this.#bindEvents();
     FormHandler.instance = this;
   }
@@ -24,49 +26,29 @@ export class FormHandler {
   async #handleSubmit(e) {
     const { target, submitter } = e;
 
-    if (!target.hasAttribute(this.attrs.form) || target.tagName.toLowerCase() !== "form") {
-      return;
+    const cfg = this.#getConfig(target);
+
+    if (this.#isFormValid(target, e, cfg)) {
+      await this.#formProcessor.process(target, submitter, cfg);
+    }
+  }
+
+  #getConfig(form) {
+    return FormSend.getConfig(form, this.attrs);
+  }
+
+  #isFormValid(form, e, cfg) {
+    if (!cfg || !form.hasAttribute(this.attrs.form) || form.tagName.toLowerCase() !== "form") {
+      return false;
     }
 
-    if (this.isSubmittingForms.has(target)) {
-      e.preventDefault();
-      return;
-    }
-
-    const cfg = FormSend.getConfig(target, this.attrs);
-    const {
-      url,
-      method = "POST",
-      showModalAfterSuccess,
-      showModalAfterError,
-      isNeedPreventDefault = true,
-      isNeedValidateBeforeSubmit,
-      isResetAfterSuccess = true,
-    } = cfg;
+    const { isNeedPreventDefault = true, isNeedValidateBeforeSubmit = true } = cfg;
 
     if (isNeedPreventDefault) {
       e.preventDefault();
     }
 
-    if (isNeedValidateBeforeSubmit && !FormValidator.getValidationForm(target)) {
-      return;
-    }
-
-    this.isSubmittingForms.add(target);
-    submitter.disabled = true;
-
-    const formSender = new FormSend(url, method, {}, this.#modalManager);
-
-    try {
-      await formSender.sendData(target, new FormData(target), {
-        showModalAfterSuccess,
-        showModalAfterError,
-        isResetAfterSuccess,
-      });
-    } finally {
-      this.isSubmittingForms.delete(target);
-      submitter.disabled = false;
-    }
+    return !(isNeedValidateBeforeSubmit && !FormValidator.getValidationForm(form));
   }
 
   #bindEvents() {
