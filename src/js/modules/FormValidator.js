@@ -57,15 +57,15 @@ export class FormValidator {
     }
 
     static getValidationForm(form) {
-        let isFormValid = true;
+        let isFormValidationPassed  = true;
 
         [ ...form.elements ].forEach((input) => {
             if (input.matches(`[${FormValidator.attrs.inputRequired}]`) && !FormValidator.validateInput(input)) {
-                isFormValid = false;
+                isFormValidationPassed  = false;
             }
         });
 
-        return isFormValid;
+        return isFormValidationPassed ;
     }
 
     static validateInput(input) {

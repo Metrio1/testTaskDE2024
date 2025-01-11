@@ -106,9 +106,6 @@ body.unlock {
     width: 3rem;
     height: 3rem;
     cursor: pointer;
-    @include hover {
-      transform: scale(1.15);
-    }
 
     @include tablet {
       top: 2.4rem;
