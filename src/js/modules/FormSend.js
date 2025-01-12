@@ -14,13 +14,6 @@ export class FormSend {
         this.#modalManager = modalManagerInstance || new ModalManager();
     }
 
-    static getConfig(form, attrs) {
-        if (!form._config) {
-            form._config = JSON.parse(form.getAttribute(attrs.form));
-        }
-        return form._config;
-    }
-
     async sendData(form, formData, { showModalAfterSuccess, showModalAfterError, isResetAfterSuccess }) {
         try {
             const response = await fetch(this.#url, this.#getRequestOptions(formData));

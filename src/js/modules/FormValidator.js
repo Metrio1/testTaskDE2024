@@ -49,7 +49,7 @@ export class FormValidator {
                 clearTimeout(input.emailValidationTimeout);
                 input.emailValidationTimeout = setTimeout(() => {
                     FormValidator.validateInput(input);
-                }, 500);
+                }, 300);
             } else {
                 FormValidator.validateInput(input);
             }
@@ -66,6 +66,14 @@ export class FormValidator {
         });
 
         return isFormValidationPassed ;
+    }
+
+    static isValidForm(form, attrs, isNeedValidateBeforeSubmit) {
+        if (!form.hasAttribute(attrs.form) || !(form instanceof HTMLFormElement)) {
+            return false;
+        }
+
+        return !(isNeedValidateBeforeSubmit && !FormValidator.getValidationForm(form));
     }
 
     static validateInput(input) {
